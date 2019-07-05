@@ -11,6 +11,9 @@ config :farsheed_trader,
   namespace: FarTrader,
   ecto_repos: [FarTrader.Repo]
 
+config :farsheed_trader, FarTrader.Repo, migration_timestamps: [type: :timestamptz]
+# config :farsheed_trader, FarTrader.Repo, migration_primary_key: [name: :uuid, type: :binary_id]
+
 # Configures the endpoint
 config :farsheed_trader, FarTraderWeb.Endpoint,
   url: [host: "localhost"],
