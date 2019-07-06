@@ -6,6 +6,9 @@ defmodule FarTrader.Application do
   use Application
 
   def start(_type, _args) do
+    :ok = :hackney_pool.start_pool(:auth_pool, [timeout: 15000, max_connections: 10])
+    :ok = :hackney_pool.start_pool(:request_pool, [timeout: 5000, max_connections: 256])
+
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository

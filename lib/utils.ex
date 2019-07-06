@@ -35,4 +35,52 @@ defmodule FarTrader.Utils do
     wd = n |> Timex.weekday()
     n.hour <= 12 && n.minute <= 30 && (n.hour >= 9 && n.minute >= 0) && wd in [6, 7, 1, 2, 3]
   end
+
+
+  @doc "sends http get using a default pool"
+  def http_get(url, headers \\ [], cookies \\ []) do
+    {:ok, resp} = HTTPoison.get(url, headers, hackney: [pool: :auth_pool, cookie: cookies])
+    resp
+  end
+
+
+  @doc "sends http post using a default pool"
+  def http_post(url, body \\ [], headers \\ [], cookies \\ []) do
+    {:ok, resp} = HTTPoison.post(url, body, headers, hackney: [pool: :auth_pool, cookie: cookies])
+    resp
+  end
+
+  @doc "catches Set-Cookie values as list of tuples "
+  @spec catch_cookies(map()) :: list()
+  def catch_cookies(resp, raw \\ true) do
+    rawlist =
+      resp.headers
+      |> Enum.filter(fn x -> elem(x, 0) == "Set-Cookie" end)
+
+    case raw do
+      true ->
+        rawlist |> Enum.map(fn x -> x |> elem(1) end)
+
+      false ->
+        rawlist
+        |> Enum.map(fn x ->
+          elem(x, 1) |> String.split(";") |> List.first() |> String.split("=") |> List.to_tuple()
+        end)
+    end
+  end
+
+  @doc "catches Location header value in case of redirection"
+  @spec catch_redirected_location(map()) :: binary()
+  def catch_redirected_location(resp) do
+    case resp.status_code do
+      302 ->
+        resp.headers
+        |> Enum.filter(fn x -> elem(x, 0) == "Location" end)
+        |> List.last()
+        |> elem(1)
+
+      _ ->
+        nil
+    end
+  end
 end
