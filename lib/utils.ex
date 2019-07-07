@@ -36,17 +36,17 @@ defmodule FarTrader.Utils do
     n.hour <= 12 && n.minute <= 30 && (n.hour >= 9 && n.minute >= 0) && wd in [6, 7, 1, 2, 3]
   end
 
-
   @doc "sends http get using a default pool"
   def http_get(url, headers \\ [], cookies \\ []) do
-    {:ok, resp} = HTTPoison.get(url, headers, hackney: [pool: :auth_pool, cookie: cookies])
+    {:ok, resp} = HTTPoison.get(url, headers, hackney: [pool: :default, cookie: cookies])
+
     resp
   end
 
-
   @doc "sends http post using a default pool"
   def http_post(url, body \\ [], headers \\ [], cookies \\ []) do
-    {:ok, resp} = HTTPoison.post(url, body, headers, hackney: [pool: :auth_pool, cookie: cookies])
+    {:ok, resp} = HTTPoison.post(url, body, headers, hackney: [pool: :default, cookie: cookies])
+
     resp
   end
 
@@ -59,7 +59,7 @@ defmodule FarTrader.Utils do
 
     case raw do
       true ->
-        rawlist |> Enum.map(fn x -> x |> elem(1) end)
+        rawlist |> Enum.map(fn x -> x |> elem(1) |> String.split(";") |> List.first() end)
 
       false ->
         rawlist
