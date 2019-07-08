@@ -5,6 +5,15 @@ defmodule EasyTrader.Auth do
       1- get a request verification token from a form input
       2- 
   """
+
+  @rest_headers [
+      Host: "easytrader.emofid.com",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0",
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=utf-8",
+      Referer: "https://easytrader.emofid.com",
+      TE: "Trailers"
+    ]
   alias FarTrader.Utils
   @ua "Mozilla/5.0 (X11; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0"
 
@@ -155,16 +164,6 @@ defmodule EasyTrader.Auth do
     ## get final app cookie
   end
 
-  def get_auth_cookies do
-    #username = "0063879794"
-    #password = "TR4Fh*q^57bYgRojIN$4UdNn#25GY6n4G7cYjYqprR39ws%7"
-    username = "4270395923"
-    password = "Amir 4302"
-    do_all(username, password)
-    # password = "wrong"
-    #
-  end
-
   def test_successful_auth(cookies) do
     url = "https://easytrader.emofid.com/Order/GetOrders?_=" <> Ecto.UUID.generate()
 
@@ -176,4 +175,41 @@ defmodule EasyTrader.Auth do
 
     Utils.http_post(url, payload, headers, cookies)
   end
+
+  def get_orders(cookies) do
+    url = "https://easytrader.emofid.com/Order/GetOrders"
+    {:ok, payload} = %{page: 0, take: 50} |> Jason.encode()
+    Utils.http_post(url, payload, @rest_headers, cookies)
+  end
+
+
+  def search_orders(cookies) do
+    url = "https://easytrader.emofid.com/OrdersList/Search"
+
+
+    {:ok, payload} = %{
+      options: %{
+        "filter" => [
+          ["OrderEntryDate", ">=", "2019/6/8 0:0:0"],
+          "and",
+          ["OrderEntryDate", "<=", "2019/7/9 23:59:0"],
+          "and",
+          ["SymbolISIN", "=", "IRO3IGCZ0001"]
+        ],
+        "requireTotalCount" => true,
+        "searchOperation" => "contains",
+        "searchValue" => nil,
+        "skip" => 0,
+        "sort" => [%{"desc" => true, "selector" => "OrderEntryDate"}],
+        "take" => 20,
+        "userData" => %{}
+      }
+    } |> Jason.encode
+
+
+    Utils.http_post(url, payload, @rest_headers, cookies)
+  end
+
+
+
 end

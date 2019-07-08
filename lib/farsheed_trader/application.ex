@@ -14,7 +14,9 @@ defmodule FarTrader.Application do
       # Start the Ecto repository
       FarTrader.Repo,
       # Start the endpoint when the application starts
-      FarTraderWeb.Endpoint
+      FarTraderWeb.Endpoint,
+      {Rihanna.Supervisor, [postgrex: FarTrader.Repo.config()]}
+
       # Starts a worker by calling: FarTrader.Worker.start_link(arg)
       # {FarTrader.Worker, arg},
     ]

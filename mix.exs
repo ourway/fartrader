@@ -46,7 +46,8 @@ defmodule FarTrader.MixProject do
       {:httpoison, "~> 1.4"},
       {:timex, "~> 3.5"},
       {:floki, "~> 0.21.0"},
-      {:money, "~> 1.4"}
+      {:money, "~> 1.4"},
+      {:rihanna, "~> 1.3"}
     ]
   end
 
