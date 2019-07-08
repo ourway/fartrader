@@ -45,7 +45,8 @@ defmodule FarTrader.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:httpoison, "~> 1.4"},
       {:timex, "~> 3.5"},
-      {:floki, "~> 0.21.0"}
+      {:floki, "~> 0.21.0"},
+      {:money, "~> 1.4"}
     ]
   end
 

@@ -9,8 +9,8 @@ defmodule EasyTrader.AuthTest do
 
   describe "pre authorization process" do
     test "login information" do
-      c = Auth.get_auth_cookies() |> IO.inspect
-      c |> Auth.test_successful_auth |> IO.inspect
+      c = Auth.get_auth_cookies()
+      c |> Auth.test_successful_auth() |> IO.inspect()
     end
   end
 end
