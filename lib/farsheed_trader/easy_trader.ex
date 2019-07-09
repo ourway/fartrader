@@ -7,13 +7,13 @@ defmodule EasyTrader.Auth do
   """
 
   @rest_headers [
-      Host: "easytrader.emofid.com",
-      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0",
-      Accept: "application/json",
-      "Content-Type": "application/json;charset=utf-8",
-      Referer: "https://easytrader.emofid.com",
-      TE: "Trailers"
-    ]
+    Host: "easytrader.emofid.com",
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0",
+    Accept: "application/json",
+    "Content-Type": "application/json;charset=utf-8",
+    Referer: "https://easytrader.emofid.com",
+    TE: "Trailers"
+  ]
   alias FarTrader.Utils
   @ua "Mozilla/5.0 (X11; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0"
 
@@ -182,34 +182,30 @@ defmodule EasyTrader.Auth do
     Utils.http_post(url, payload, @rest_headers, cookies)
   end
 
-
   def search_orders(cookies) do
     url = "https://easytrader.emofid.com/OrdersList/Search"
 
-
-    {:ok, payload} = %{
-      options: %{
-        "filter" => [
-          ["OrderEntryDate", ">=", "2019/6/8 0:0:0"],
-          "and",
-          ["OrderEntryDate", "<=", "2019/7/9 23:59:0"],
-          "and",
-          ["SymbolISIN", "=", "IRO3IGCZ0001"]
-        ],
-        "requireTotalCount" => true,
-        "searchOperation" => "contains",
-        "searchValue" => nil,
-        "skip" => 0,
-        "sort" => [%{"desc" => true, "selector" => "OrderEntryDate"}],
-        "take" => 20,
-        "userData" => %{}
+    {:ok, payload} =
+      %{
+        options: %{
+          "filter" => [
+            ["OrderEntryDate", ">=", "2019/6/8 0:0:0"],
+            "and",
+            ["OrderEntryDate", "<=", "2019/7/9 23:59:0"],
+            "and",
+            ["SymbolISIN", "=", "IRO3IGCZ0001"]
+          ],
+          "requireTotalCount" => true,
+          "searchOperation" => "contains",
+          "searchValue" => nil,
+          "skip" => 0,
+          "sort" => [%{"desc" => true, "selector" => "OrderEntryDate"}],
+          "take" => 20,
+          "userData" => %{}
+        }
       }
-    } |> Jason.encode
-
+      |> Jason.encode()
 
     Utils.http_post(url, payload, @rest_headers, cookies)
   end
-
-
-
 end
