@@ -1,7 +1,6 @@
 defmodule EasyTrader.AuthTest do
   use FarTrader.DataCase, async: true
   alias EasyTrader.Auth
-  alias FarTrader.Utils
 
   setup do
     :ok
