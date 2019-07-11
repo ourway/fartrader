@@ -1,4 +1,8 @@
 defmodule EasyTrader.Auth do
+  import Ecto.Query, only: [from: 2]
+  alias FarTrader.BrokerCredentials
+  alias FarTrader.Repo
+
   @moduledoc """
     Easy Trader Authentication process.
     this is the recepie:
@@ -6,14 +10,6 @@ defmodule EasyTrader.Auth do
       2- 
   """
 
-  @rest_headers [
-    Host: "easytrader.emofid.com",
-    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0",
-    Accept: "application/json",
-    "Content-Type": "application/json;charset=utf-8",
-    Referer: "https://easytrader.emofid.com",
-    TE: "Trailers"
-  ]
   alias FarTrader.Utils
   @ua "Mozilla/5.0 (X11; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0"
 
@@ -176,10 +172,188 @@ defmodule EasyTrader.Auth do
     Utils.http_post(url, payload, headers, cookies)
   end
 
+  def get_credentials(nickname) do
+    query =
+      from bu in "broker_credentials",
+        where: bu.nickname == ^nickname,
+        where: bu.broker == "emofid",
+        where: bu.credentials_expiration_datetime > ^Timex.now(),
+        select: bu.credentials
+
+    case query |> Repo.all() do
+      [] ->
+        nickname |> save_credentials
+        nickname |> get_credentials
+
+      [creds] ->
+        creds |> Map.get("cookies")
+    end
+  end
+
+  def get_all_credentials do
+    BrokerCredentials
+    |> Repo.all()
+    |> Enum.map(fn bu ->
+      bu.nickname |> save_credentials
+      Process.sleep(5_000)
+
+      schedule_next_crenentials_renewal()
+    end)
+  end
+
+  def schedule_next_crenentials_renewal do
+    Rihanna.schedule({EasyTrader, :get_all_credentials, []}, in: :timer.hours(4))
+  end
+
+  def save_credentials(nickname) do
+    query =
+      from bu in "broker_credentials",
+        where: bu.nickname == ^nickname,
+        where: bu.broker == "emofid",
+        select: [:credentials_expiration_datetime, :credentials, :username, :password, :id]
+
+    bu = query |> Repo.one()
+
+    case bu.credentials_expiration_datetime > Timex.now() |> Timex.shift(hours: 1) do
+      true ->
+        :valid
+
+      false ->
+        creds = do_all(bu.username, bu.password)
+        ext = Timex.now() |> Timex.shift(hours: 4)
+        old = BrokerCredentials |> Repo.get!(bu.id)
+
+        cs =
+          Ecto.Changeset.change(old,
+            credentials: %{cookies: creds},
+            credentials_expiration_datetime: ext
+          )
+
+        case cs |> Repo.update() do
+          {:ok, _} ->
+            :updated
+
+          {:error, _} ->
+            :error
+        end
+    end
+  end
+end
+
+defmodule EasyTrader.APIs do
+  @moduledoc "Easy Trader REStful related apis"
+  alias EasyTrader.Auth
+  alias FarTrader.Repo
+  alias FarTrader.Stock
+  alias FarTrader.Utils
+  @master_account "amir"
+
+  @rest_headers [
+    Host: "easytrader.emofid.com",
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0",
+    Accept: "application/json",
+    "Content-Type": "application/json;charset=utf-8",
+    Referer: "https://easytrader.emofid.com",
+    TE: "Trailers"
+  ]
+
+  def update_stock_data(isin) do
+    url = "https://easytrader.emofid.com/MarketData/GetTicker"
+    {:ok, payload} = %{isin: isin} |> Jason.encode()
+    cookies = @master_account |> Auth.get_credentials()
+    %HTTPoison.Response{:body => body} = url |> Utils.http_post(payload, @rest_headers, cookies)
+
+    case body |> Jason.decode() do
+      {:ok, %{"result" => true, "stock" => %{"stockData" => data}}} ->
+        old_stock = Stock |> Repo.get_by(isin: isin)
+
+        case old_stock.day_latest_trade_local_datetime == data |> Map.get("tradeDate") do
+          true ->
+            :up_to_date
+
+          false ->
+            {:ok, _stock} =
+              old_stock
+              |> Stock.changeset(%{
+                depth: %{data: data |> Map.get("depths")},
+                day_latest_trade_local_datetime: data |> Map.get("tradeDate"),
+                yesterday_closing_price: data |> Map.get("yesterdayPrice"),
+                day_closing_price: data |> Map.get("closingPrice"),
+                day_last_traded_price: data |> Map.get("lastTradedPrice"),
+                day_number_of_traded_shares: data |> Map.get("totalNumberOfTrades"),
+                day_price_change_percent: data |> Map.get("priceVar"),
+                day_price_change: data |> Map.get("priceChange"),
+                day_closing_price_change_percent: data |> Map.get("closingPriceVarPercent"),
+                day_closing_price_change: data |> Map.get("closingPriceChange"),
+                day_low_price: data |> Map.get("lowPrice"),
+                day_high_price: data |> Map.get("highPrice"),
+                total_traded_value: data |> Map.get("totalTradeValue"),
+                total_number_traded_shares: data |> Map.get("totalNumberOfSharesTraded"),
+                day_min_allowed_price: data |> Map.get("lowAllowedPrice"),
+                day_max_allowed_price: data |> Map.get("highAllowedPrice"),
+                base_volume: data |> Map.get("basisVolume"),
+                day_min_allowed_quantity: data |> Map.get("minQuantityOrder"),
+                day_max_allowed_quantity: data |> Map.get("maxQuantityOrder"),
+                day_best_ask: data |> Map.get("bestSellLimitPrice1"),
+                day_best_bid: data |> Map.get("bestBuyLimitPrice1"),
+                day_number_of_shares_bought_at_best_ask: data |> Map.get("bestBuyLimitQuantity1"),
+                day_number_of_shares_sold_at_best_bid: data |> Map.get("bestSellLimitQuantity1")
+              })
+              |> Repo.update()
+        end
+
+      {:ok, %{"result" => false}} ->
+        :update_failed
+    end
+  end
+
+  def update_db_tickers do
+    url = "https://easytrader.emofid.com/MarketData/GetTickers"
+    {:ok, payload} = %{} |> Jason.encode()
+    cookies = @master_account |> Auth.get_credentials()
+    %HTTPoison.Response{:body => body} = url |> Utils.http_post(payload, @rest_headers, cookies)
+    {:ok, stocks} = body |> Jason.decode()
+
+    operations = fn ->
+      stocks
+      |> Enum.map(fn s ->
+        Rihanna.schedule({EasyTrader.APIs, :update_stock_data, [s |> Map.get("isin")]},
+          in: :timer.seconds(30)
+        )
+
+        stock = %Stock{
+          isin: s |> Map.get("isin"),
+          symbol: s |> Map.get("symbol") |> Persian.fix(),
+          fa_symbol: s |> Map.get("symbol") |> Persian.fix(),
+          market_unit: s |> Map.get("marketUnit")
+        }
+
+        case Stock |> Repo.get_by(isin: stock.isin) do
+          nil ->
+            {:ok, _} = stock |> Repo.insert()
+
+          old_stock ->
+            {:ok, _} =
+              old_stock
+              |> Stock.changeset(%{
+                symbol: stock.symbol,
+                fa_symbol: stock.fa_symbol,
+                market_unit: stock.market_unit
+              })
+              |> Repo.update()
+        end
+      end)
+    end
+
+    Repo.transaction(operations)
+  end
+
   def get_orders(cookies) do
     url = "https://easytrader.emofid.com/Order/GetOrders"
     {:ok, payload} = %{page: 0, take: 50} |> Jason.encode()
-    Utils.http_post(url, payload, @rest_headers, cookies)
+    resp = Utils.http_post(url, payload, @rest_headers, cookies)
+    {:ok, results} = resp.body |> Jason.decode()
+    results
   end
 
   def search_orders(cookies) do

@@ -1,5 +1,6 @@
 defmodule FarTrader.ExternalConnections do
   @moduledoc false
+  alias FarTrader.Utils
 
   @spec get_asanbours_results(binary()) :: map()
   def get_asanbours_results(filter_uuid) do
@@ -13,5 +14,28 @@ defmodule FarTrader.ExternalConnections do
 
     {:ok, data} = [%{id: filter_uuid}] |> Jason.encode()
     HTTPoison.post(url, data, headers)
+  end
+
+  @doc """
+    fetches symbol history from tse.ir api.
+    sample page is `http://tse.ir/json/Instrument/TradeHistory/TradeHistory_IRO1NIRO0001.html`
+    example:
+      
+      iex> FarTrader.ExternalConnections.get_symbol_history("IRO1SIPA0001", 1398, 4)
+  """
+  @spec get_symbol_history(binary()) :: map()
+  def get_symbol_history(isin) do
+    url =
+      "http://tse.ir/json/Instrument/TradeHistory/TradeHistory_#{isin |> String.upcase()}.html"
+
+    resp = Utils.http_get(url)
+
+    case resp.status_code do
+      200 ->
+        resp.body |> Floki.parse() |> Floki.find("table tbody tr")
+
+      _ ->
+        :not_found
+    end
   end
 end

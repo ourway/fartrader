@@ -1,11 +1,14 @@
-# Script for populating the database. You can run it as:
+alias FarTrader.Repo
+
+Repo.insert!(%FarTrader.BrokerCredentials{
+  broker: "emofid",
+  nickname: "amir",
+  username: "4270395923",
+  password: "Amir 4302"
+})
+
+## we need to get all stocks:
 #
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     FarTrader.Repo.insert!(%FarTrader.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+EasyTrader.APIs.update_db_tickers()
+
+# EasyTrader.Auth.get_all_credentials()

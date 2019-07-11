@@ -1,7 +1,6 @@
 defmodule FarTrader.ExternalData do
   @moduledoc false
   alias FarTrader.Market
-  alias FarTrader.Utils
 
   @doc "gets market overview from `tse.ir`"
   @spec tse_overview() :: map()

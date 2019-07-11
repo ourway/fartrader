@@ -1,7 +1,7 @@
 defmodule FarTrader.Utils do
   @moduledoc false
 
-  def get_timezone() do
+  def get_timezone do
     {zone, result} = System.cmd("date", ["+%Z"])
     if result == 0, do: String.trim(zone)
   end
@@ -30,7 +30,7 @@ defmodule FarTrader.Utils do
     Timex.now("Asia/Tehran")
   end
 
-  def is_market_open? do
+  def market_open? do
     n = now()
     wd = n |> Timex.weekday()
     n.hour <= 12 && n.minute <= 30 && (n.hour >= 9 && n.minute >= 0) && wd in [6, 7, 1, 2, 3]
@@ -64,7 +64,12 @@ defmodule FarTrader.Utils do
       false ->
         rawlist
         |> Enum.map(fn x ->
-          elem(x, 1) |> String.split(";") |> List.first() |> String.split("=") |> List.to_tuple()
+          x
+          |> elem(1)
+          |> String.split(";")
+          |> List.first()
+          |> String.split("=")
+          |> List.to_tuple()
         end)
     end
   end
@@ -82,5 +87,39 @@ defmodule FarTrader.Utils do
       _ ->
         nil
     end
+  end
+
+  @doc """
+    gets jdate like `1398/4/19' with shift in days
+  """
+  @spec get_jdate(integer()) :: binary() | map()
+  def get_jdate(shift, mode \\ 0) do
+    {:ok, result} =
+      Jalaali.Calendar
+      |> DateTime.utc_now()
+      |> DateTime.convert!(Calendar.ISO)
+      |> Timex.shift(days: shift)
+      |> Timex.to_datetime("Asia/Tehran")
+      |> DateTime.convert(Jalaali.Calendar)
+
+    case mode do
+      0 ->
+        %DateTime{
+          :day => jday,
+          :month => jmonth,
+          :year => jyear
+        } = result
+
+        "#{jyear}/#{jmonth}/#{jday}"
+
+      1 ->
+        result
+    end
+  end
+
+  @doc " returns today as jdate "
+  @spec get_jdate() :: binary()
+  def get_jdate do
+    get_jdate(0)
   end
 end

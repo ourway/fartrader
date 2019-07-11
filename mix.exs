@@ -39,6 +39,7 @@ defmodule FarTrader.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
@@ -47,7 +48,9 @@ defmodule FarTrader.MixProject do
       {:timex, "~> 3.5"},
       {:floki, "~> 0.21.0"},
       {:money, "~> 1.4"},
-      {:rihanna, "~> 1.3"}
+      {:rihanna, "~> 1.3"},
+      {:jalaali, "~> 0.3"},
+      {:persian, "~> 0.1"}
     ]
   end
 

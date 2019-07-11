@@ -12,6 +12,8 @@ defmodule FarTraderWeb.ConnCase do
   inside a transaction which is reset at the beginning
   of the test unless the test case is marked as async.
   """
+  alias Ecto.Adapters.SQL.Sandbox
+  alias FarTrader.Repo
 
   use ExUnit.CaseTemplate
 
@@ -27,10 +29,10 @@ defmodule FarTraderWeb.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(FarTrader.Repo)
+    :ok = Sandbox.checkout(Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(FarTrader.Repo, {:shared, self()})
+      Sandbox.mode(Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

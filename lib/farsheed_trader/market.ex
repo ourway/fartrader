@@ -2,8 +2,6 @@ defmodule FarTrader.Market do
   @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
-  alias Ecto.Adapters.SQL
-  alias Ecto.InvalidChangesetError
 
   schema "markets" do
     field :name, :string

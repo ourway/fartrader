@@ -8,7 +8,7 @@ defmodule FarTrader.Repo.Migrations.CreateEasytraderAuth do
       add :username, :string, null: false
       add :password, :string, null: false
       add :credentials, :map, null: false, default: %{}
-      add :credentials_expiration_datetime, :timestamptz
+      add :credentials_expiration_datetime, :timestamptz, default: fragment("now()")
 
       timestamps(type: :timestamptz)
     end
