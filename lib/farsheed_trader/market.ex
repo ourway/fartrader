@@ -8,6 +8,7 @@ defmodule FarTrader.Market do
     field :index, :float
     field :volume, :integer
     field :trade_count, :integer
+    field :trade_value, :float
     field :cap, :integer
     field :status, :string
     timestamps(type: :utc_datetime_usec)
@@ -21,6 +22,7 @@ defmodule FarTrader.Market do
       :index,
       :volume,
       :trade_count,
+      :trade_value,
       :cap,
       :status
     ])

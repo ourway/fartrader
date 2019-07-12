@@ -2,7 +2,7 @@ defmodule FarTrader.ExternalConnections do
   @moduledoc false
   alias FarTrader.Utils
 
-  @spec get_asanbours_results(binary()) :: map()
+  @spec get_asanbours_results(binary()) :: {:error, map()} | {:ok, map()}
   def get_asanbours_results(filter_uuid) do
     url = "https://asanbourse.ir/api/ShareDiagram/ShareGetAllResult"
 
@@ -23,7 +23,7 @@ defmodule FarTrader.ExternalConnections do
       
       iex> FarTrader.ExternalConnections.get_symbol_history("IRO1SIPA0001", 1398, 4)
   """
-  @spec get_symbol_history(binary()) :: map()
+  @spec get_symbol_history(binary()) :: :not_found | list()
   def get_symbol_history(isin) do
     url =
       "http://tse.ir/json/Instrument/TradeHistory/TradeHistory_#{isin |> String.upcase()}.html"

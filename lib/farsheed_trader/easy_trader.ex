@@ -318,7 +318,7 @@ defmodule EasyTrader.APIs do
       stocks
       |> Enum.map(fn s ->
         Rihanna.schedule({EasyTrader.APIs, :update_stock_data, [s |> Map.get("isin")]},
-          in: :timer.seconds(30)
+          in: :timer.seconds(10)
         )
 
         stock = %Stock{

@@ -27,10 +27,11 @@ defmodule FarTrader.Repo.Migrations.Symbol do
 
     create table(:markets) do
       add :name, :string, null: false
-      add :index, :float, null: false
-      add :volume, :bigint, null: false
-      add :trade_count, :bigint, null: false
-      add :cap, :bigint, null: false
+      add :index, :float
+      add :volume, :bigint
+      add :trade_count, :bigint
+      add :trade_value, :float
+      add :cap, :bigint
       add :status, :string, null: false
       timestamps(type: :timestamptz)
     end

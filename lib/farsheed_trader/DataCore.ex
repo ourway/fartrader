@@ -1,5 +1,6 @@
 defmodule FarTrader.DataCore do
   @moduledoc false
+  alias Ecto.Changeset
   alias FarTrader.ExternalData
   alias FarTrader.Market
   alias FarTrader.Repo
@@ -23,7 +24,7 @@ defmodule FarTrader.DataCore do
         {:ok, _m} = cs |> Repo.insert()
 
       m ->
-        m |> Market.changeset(%{basic_info | status: status})
+        m |> Changeset.change(%{status: status}) |> Repo.update
     end
   end
 end
