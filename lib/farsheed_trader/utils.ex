@@ -38,14 +38,14 @@ defmodule FarTrader.Utils do
 
   @doc "sends http get using a default pool"
   def http_get(url, headers \\ [], cookies \\ []) do
-    {:ok, resp} = HTTPoison.get(url, headers, hackney: [pool: :default, cookie: cookies])
+    {:ok, resp} = HTTPoison.get(url, headers, hackney: [pool: :default, cookie: cookies, recv_timeout: 15_000])
 
     resp
   end
 
   @doc "sends http post using a default pool"
   def http_post(url, body \\ [], headers \\ [], cookies \\ []) do
-    {:ok, resp} = HTTPoison.post(url, body, headers, hackney: [pool: :default, cookie: cookies])
+    {:ok, resp} = HTTPoison.post(url, body, headers, hackney: [pool: :default, cookie: cookies, recv_timeout: 15_000])
 
     resp
   end
