@@ -39,23 +39,26 @@ defmodule FarTrader.ExternalData do
 
     {:ok, %HTTPoison.Response{:status_code => 200, :body => body}} = HTTPoison.get(url, headers)
     {:ok, resp2} = body |> Jason.decode()
-    
+
     {resp2, resp |> Map.get("tabs")}
   end
 
   @spec market_basic_info() :: map()
   def market_basic_info do
     data = tse_market()
-    [volume, value, count, cap] =  data |> elem(1) |> Enum.filter(fn x -> x["t"] == "cash" end) |> List.first |> Map.get("v")
+
+    [volume, value, count, cap] =
+      data |> elem(1) |> Enum.filter(fn x -> x["t"] == "cash" end) |> List.first() |> Map.get("v")
+
     %{"miniSlider" => [index, _volume, _trade_count, _cap, _, _]} = data |> elem(0)
 
     %Market{
       name: "main",
       index: index,
-      volume: volume * 1_000_000,
-      trade_count: count,
-      trade_value: value, 
-      cap: cap
+      volume: String.to_integer(volume) * 1_000_000,
+      trade_count: count |> String.to_integer(),
+      trade_value: value |> String.to_integer(),
+      cap: cap |> String.to_integer()
     }
   end
 end

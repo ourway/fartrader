@@ -167,7 +167,7 @@ defmodule EasyTrader.Auth do
       "Content-Type": "application/json"
     ]
 
-    {:ok, payload} = %{page: 0, take: 50} |> Jason.encode()
+    {:ok, payload} = %{page: 0, take: 1000} |> Jason.encode()
 
     Utils.http_post(url, payload, headers, cookies)
   end
@@ -296,6 +296,17 @@ defmodule EasyTrader.APIs do
                 day_max_allowed_quantity: data |> Map.get("maxQuantityOrder"),
                 day_best_ask: data |> Map.get("bestSellLimitPrice1"),
                 day_best_bid: data |> Map.get("bestBuyLimitPrice1"),
+                status:
+                  case data |> Map.get("symbolStateId") do
+                    5 ->
+                      "banned"
+
+                    1 ->
+                      "active"
+
+                    _ ->
+                      "N/A"
+                  end,
                 day_number_of_shares_bought_at_best_ask: data |> Map.get("bestBuyLimitQuantity1"),
                 day_number_of_shares_sold_at_best_bid: data |> Map.get("bestSellLimitQuantity1")
               })

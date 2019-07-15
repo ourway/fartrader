@@ -24,7 +24,7 @@ defmodule FarTrader.DataCore do
         {:ok, _m} = cs |> Repo.insert()
 
       m ->
-        m |> Changeset.change(%{status: status}) |> Repo.update
+        m |> Changeset.change(%{status: status}) |> Repo.update()
     end
   end
 end

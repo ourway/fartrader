@@ -5,7 +5,7 @@
 # is restricted to this project.
 
 # General application configuration
-use Mix.Config
+import Config
 
 config :farsheed_trader,
   namespace: FarTrader,
@@ -34,6 +34,10 @@ config :rihanna,
   producer_postgres_connection: {Ecto, FarTrader.Repo},
   dispatcher_max_concurrency: 16,
   dispatcher_poll_interval: 25
+
+config :farsheed_trader, FarTrader.Periodically,
+  market_info: {FarTrader.ExternalData, :market_basic_info, [], 5_000},
+  stock_info: {EasyTrader.APIs, :update_stock_data, ["IRO1SSNR0001"], 10_000}
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
