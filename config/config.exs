@@ -36,8 +36,7 @@ config :rihanna,
   dispatcher_poll_interval: 25
 
 config :farsheed_trader, FarTrader.Periodically,
-  market_info: {FarTrader.ExternalData, :market_basic_info, [], 5_000},
-  stock_info: {EasyTrader.APIs, :update_stock_data, ["IRO1SSNR0001"], 10_000}
+  crash_testing: {FarTrader.Playground, :maybe_crash, [], 1000}
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

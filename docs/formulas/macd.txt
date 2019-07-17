@@ -1,0 +1,6 @@
+The Formula for MACD:
+
+MACD = { 12-Period EMA } - { 26-Period EMA }
+
+Simple usage explanation:
+https://cdn.jwplayer.com/videos/5cr3q5IG-cCCJjrwa.mp4

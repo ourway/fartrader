@@ -15,6 +15,7 @@ defmodule FarTrader.Application do
       FarTrader.Repo,
       # Start the endpoint when the application starts
       FarTraderWeb.Endpoint,
+      FarTrader.Periodically,
       {Rihanna.Supervisor, [postgrex: FarTrader.Repo.config()]}
 
       # Starts a worker by calling: FarTrader.Worker.start_link(arg)

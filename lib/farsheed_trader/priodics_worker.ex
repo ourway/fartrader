@@ -14,7 +14,7 @@ defmodule FarTrader.Periodically do
   """
   use GenServer
 
-  def start_link do
+  def start_link(_) do
     {:ok, tasks} = Application.fetch_env(:farsheed_trader, __MODULE__)
     GenServer.start_link(__MODULE__, tasks)
   end
