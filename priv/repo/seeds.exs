@@ -12,13 +12,14 @@ Repo.insert!(%FarTrader.BrokerCredentials{
 ## we need to get all stocks:
 #
 # EasyTrader.APIs.update_db_tickers()
-
 EasyTrader.APIs.add_stocks_to_db()
 
 Stock
 |> Repo.all()
 |> Enum.map(fn s ->
-  s |> ExternalData.update_stock_basic_info() |> EasyTrader.APIs.update_stock_data()
+  Rihanna.enqueue({ExternalData, :update_stock_basic_info, [s]})
+  Rihanna.enqueue({EasyTrader.APIs, :update_stock_data, [s]})
+  Rihanna.enqueue({ExternalData, :update_corp_info, [s]})
 end)
 
 # EasyTrader.Auth.get_all_credentials()

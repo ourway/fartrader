@@ -57,7 +57,7 @@ defmodule FarTrader.Repo.Migrations.Symbol do
       add :industry_code, :integer
       add :status, :string
       add :sub_industry, :string
-      add :sub_industry_code, :string
+      add :sub_industry_code, :integer
       timestamps(type: :timestamptz)
     end
 

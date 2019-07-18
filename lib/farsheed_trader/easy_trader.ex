@@ -262,16 +262,22 @@ defmodule EasyTrader.APIs do
     {:ok, payload} = %{isin: stock.isin} |> Jason.encode()
     cookies = @master_account |> Auth.get_credentials()
     %HTTPoison.Response{:body => body} = url |> Utils.http_post(payload, @rest_headers, cookies)
-    {:ok, %{"result" => true, "stock" => %{"stockData" => data}}} = body |> Jason.decode()
 
-    {:ok, result} =
-      stock
-      |> Stock.changeset(%{
-        base_volume: data["basisVolume"]
-      })
-      |> Repo.update()
+    case body |> Jason.decode() do
+      {:ok, %{"result" => true, "stock" => %{"stockData" => data}}} ->
+        {:ok, result} =
+          stock
+          |> Stock.changeset(%{
+            base_volume: data["basisVolume"]
+          })
+          |> Repo.update()
 
-    result
+        result
+
+      {:ok, %{"result" => false}} ->
+        :upstream_error
+        stock
+    end
   end
 
   def get_stock_list do
@@ -286,19 +292,17 @@ defmodule EasyTrader.APIs do
   def add_stocks_to_db do
     list = get_stock_list()
 
-    Repo.transaction(fn ->
-      list
-      |> Enum.map(fn s ->
-        %Stock{
-          isin: s["isin"],
-          market_unit: s["marketUnit"],
-          symbol: s["symbol"],
-          fa_symbol: s["symbol"],
-          name: s["title"],
-          fa_name: s["title"]
-        }
-        |> Repo.insert(on_conflict: :nothing)
-      end)
+    list
+    |> Enum.map(fn s ->
+      %Stock{
+        isin: s["isin"],
+        market_unit: s["marketUnit"],
+        symbol: s["symbol"],
+        fa_symbol: s["symbol"],
+        name: s["title"],
+        fa_name: s["title"]
+      }
+      |> Repo.insert(on_conflict: :nothing)
     end)
   end
 

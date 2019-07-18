@@ -22,7 +22,7 @@ defmodule FarTrader.Stock do
     field :industry_code, :integer
     field :status, :string
     field :sub_industry, :string
-    field :sub_industry_code, :string
+    field :sub_industry_code, :integer
     has_many :stock_data, StockData
     timestamps(type: :utc_datetime_usec)
   end
