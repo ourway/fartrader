@@ -126,4 +126,20 @@ defmodule FarTrader.Utils do
   def get_jdate do
     get_jdate(0)
   end
+
+  @doc """
+  converts jalali datetime to utc datetime
+    iex> FarTrader.Utils.jalali_to_datetime(1396, 4, 26, 19, 29, 0)
+    ~U[2017-07-17 14:59:00Z]
+  """
+  def jalali_to_datetime(jyear, jmon, jday, hour, minute, second) do
+    {:ok, jalaali_date} = Date.new(jyear, jmon, jday, Jalaali.Calendar)
+    {:ok, iso_date} = Date.convert(jalaali_date, Calendar.ISO)
+
+    Timex.to_datetime(
+      {{iso_date.year, iso_date.month, iso_date.day}, {hour, minute, second}},
+      "Asia/Tehran"
+    )
+    |> Timex.to_datetime("Etc/UTC")
+  end
 end

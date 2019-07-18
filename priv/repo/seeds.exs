@@ -9,6 +9,6 @@ Repo.insert!(%FarTrader.BrokerCredentials{
 
 ## we need to get all stocks:
 #
-EasyTrader.APIs.update_db_tickers()
+# EasyTrader.APIs.update_db_tickers()
 
 # EasyTrader.Auth.get_all_credentials()

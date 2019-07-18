@@ -244,7 +244,6 @@ defmodule EasyTrader.APIs do
   @moduledoc "Easy Trader REStful related apis"
   alias EasyTrader.Auth
   alias FarTrader.Repo
-  alias FarTrader.Stock
   alias FarTrader.Utils
   @master_account "amir"
 
@@ -262,60 +261,6 @@ defmodule EasyTrader.APIs do
     {:ok, payload} = %{isin: isin} |> Jason.encode()
     cookies = @master_account |> Auth.get_credentials()
     %HTTPoison.Response{:body => body} = url |> Utils.http_post(payload, @rest_headers, cookies)
-
-    case body |> Jason.decode() do
-      {:ok, %{"result" => true, "stock" => %{"stockData" => data}}} ->
-        old_stock = Stock |> Repo.get_by(isin: isin)
-
-        case old_stock.day_latest_trade_local_datetime == data |> Map.get("tradeDate") do
-          true ->
-            :up_to_date
-
-          false ->
-            {:ok, _stock} =
-              old_stock
-              |> Stock.changeset(%{
-                depth: %{data: data |> Map.get("depths")},
-                day_latest_trade_local_datetime: data |> Map.get("tradeDate"),
-                yesterday_closing_price: data |> Map.get("yesterdayPrice"),
-                day_closing_price: data |> Map.get("closingPrice"),
-                day_last_traded_price: data |> Map.get("lastTradedPrice"),
-                day_number_of_traded_shares: data |> Map.get("totalNumberOfTrades"),
-                day_price_change_percent: data |> Map.get("priceVar"),
-                day_price_change: data |> Map.get("priceChange"),
-                day_closing_price_change_percent: data |> Map.get("closingPriceVarPercent"),
-                day_closing_price_change: data |> Map.get("closingPriceChange"),
-                day_low_price: data |> Map.get("lowPrice"),
-                day_high_price: data |> Map.get("highPrice"),
-                total_traded_value: data |> Map.get("totalTradeValue"),
-                total_number_traded_shares: data |> Map.get("totalNumberOfSharesTraded"),
-                day_min_allowed_price: data |> Map.get("lowAllowedPrice"),
-                day_max_allowed_price: data |> Map.get("highAllowedPrice"),
-                base_volume: data |> Map.get("basisVolume"),
-                day_min_allowed_quantity: data |> Map.get("minQuantityOrder"),
-                day_max_allowed_quantity: data |> Map.get("maxQuantityOrder"),
-                day_best_ask: data |> Map.get("bestSellLimitPrice1"),
-                day_best_bid: data |> Map.get("bestBuyLimitPrice1"),
-                status:
-                  case data |> Map.get("symbolStateId") do
-                    5 ->
-                      "banned"
-
-                    1 ->
-                      "active"
-
-                    _ ->
-                      "N/A"
-                  end,
-                day_number_of_shares_bought_at_best_ask: data |> Map.get("bestBuyLimitQuantity1"),
-                day_number_of_shares_sold_at_best_bid: data |> Map.get("bestSellLimitQuantity1")
-              })
-              |> Repo.update()
-        end
-
-      {:ok, %{"result" => false}} ->
-        :update_failed
-    end
   end
 
   def update_db_tickers do
@@ -324,39 +269,6 @@ defmodule EasyTrader.APIs do
     cookies = @master_account |> Auth.get_credentials()
     %HTTPoison.Response{:body => body} = url |> Utils.http_post(payload, @rest_headers, cookies)
     {:ok, stocks} = body |> Jason.decode()
-
-    operations = fn ->
-      stocks
-      |> Enum.map(fn s ->
-        Rihanna.schedule({EasyTrader.APIs, :update_stock_data, [s |> Map.get("isin")]},
-          in: :timer.seconds(10)
-        )
-
-        stock = %Stock{
-          isin: s |> Map.get("isin"),
-          symbol: s |> Map.get("symbol") |> Persian.fix(),
-          fa_symbol: s |> Map.get("symbol") |> Persian.fix(),
-          market_unit: s |> Map.get("marketUnit")
-        }
-
-        case Stock |> Repo.get_by(isin: stock.isin) do
-          nil ->
-            {:ok, _} = stock |> Repo.insert()
-
-          old_stock ->
-            {:ok, _} =
-              old_stock
-              |> Stock.changeset(%{
-                symbol: stock.symbol,
-                fa_symbol: stock.fa_symbol,
-                market_unit: stock.market_unit
-              })
-              |> Repo.update()
-        end
-      end)
-    end
-
-    Repo.transaction(operations)
   end
 
   def get_orders(cookies) do

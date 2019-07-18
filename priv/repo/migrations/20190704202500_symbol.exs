@@ -38,73 +38,128 @@ defmodule FarTrader.Repo.Migrations.Symbol do
 
     create unique_index(:markets, [:name])
 
-    create table(:companies) do
-      add :fa_name, :string, null: false
-      add :en_name, :string, null: false
-      add :isin, :string, null: false
-      add :cisin, :string, null: false
-      add :en_symbol, :string
+    create table(:tradeviews) do
+      add :isin, :string
+      add :unixtime, {:array, :bigint}
+      add :closing_price, {:array, :float}
+      add :highest_price, {:array, :float}
+      add :lowest_price, {:array, :float}
+      add :opening_price, {:array, :float}
+      add :value, {:array, :float}
+      add :push_id, :string
+
+      timestamps(type: :timestamptz)
+    end
+
+    create unique_index(:tradeviews, [:isin])
+
+    create table(:stocks) do
+      # ------------  CORE   -------------
       add :fa_symbol, :string
+      add :ins_code, :string
+      add :isin, :string
+      add :cisin, :string
+      add :en_symbol, :string
+      add :fa_name, :string
+      add :en_name, :string
+      add :symbol, :string
+      add :name, :string
+      add :market_unit, :string
+      add :base_volume, :bigint
+      add :corp_name, :string
+      add :estimated_eps, :float
+      add :section_name, :string
       add :market_type, :string
       add :industry, :string
       add :industry_code, :integer
       add :sub_industry, :string
       add :sub_industry_code, :string
-
-      timestamps(type: :timestamptz)
-    end
-
-    #    execute("""
-    #        CREATE TRIGGER users_timestamps_update_trigger
-    #        BEFORE UPDATE OR INSERT
-    #        ON markets
-    #        FOR EACH ROW
-    #          EXECUTE PROCEDURE timestamp_update_func();
-    #    """)
-
-    create table(:stocks) do
-      add :fa_symbol, :string
-      add :symbol, :string
-      add :en_symbol, :string
-      add :fa_name, :string
-      add :en_name, :string
-      add :name, :string
-      add :market_unit, :string
-      add :isin, :string, null: false
-      add :adtv, :bigint
-      add :base_volume, :bigint
-      add :day_min_allowed_quantity, :bigint
-      add :day_max_allowed_quantity, :bigint
-      add :day_closing_price, :float
-      add :yesterday_closing_price, :float
-      add :day_best_ask, :float
-      add :day_best_bid, :float
-      add :day_number_of_shares_bought_at_best_ask, :bigint
-      add :day_number_of_shares_sold_at_best_bid, :bigint
-      add :day_closing_price_change, :float
-      add :day_closing_price_change_percent, :float
-      add :day_price_change, :float
-      add :day_price_change_percent, :float
-      add :total_traded_value, :float
-      add :day_traded_value, :float
-      add :total_number_traded_shares, :bigint
-      add :day_number_of_traded_shares, :bigint
-      add :day_last_traded_price, :float
-      add :day_min_allowed_price, :float
-      add :day_max_allowed_price, :float
-      add :day_low_price, :float
-      add :day_high_price, :float
-      add :effect_on_index, :float
-      add :day_latest_trade_datetime, :timestamptz
-      add :day_latest_trade_local_datetime, :string
-      add :status, :string, default: "active", null: false
-      add :depth, :map, default: %{}
-      add :company_id, references(:companies, on_delete: :delete_all)
       timestamps(type: :timestamptz)
     end
 
     create index(:stocks, [:symbol])
     create index(:stocks, [:name])
     create unique_index(:stocks, [:isin])
+
+    create table(:stock_data) do
+      # -------------  DAY ---------------
+      add :isin, :string
+      add :adtv, :bigint
+      add :quantity, :bigint
+      add :value, :float
+      add :pre_closing_price, :float
+      add :first_traded_price, :float
+      add :last_traded_price, :float
+      add :closing_price, :float
+      add :best_buy_quantity, :bigint
+      add :best_buy_price, :float
+      add :best_sell_price, :float
+      add :best_sell_quantity, :bigint
+      add :best_limits, {:array, :map}
+      add :buy_count_corp, :bigint
+      add :buy_count_ind, :bigint
+      add :buy_volume_corp, :bigint
+      add :buy_volume_ind, :bigint
+      add :market_value, :float
+      add :max_allow_price, :float
+      add :max_allow_volume, :bigint
+      add :max_price, :float
+      add :min_allow_price, :float
+      add :min_allow_volume, :bigint
+      add :min_price, :float
+      add :sector_pe, :float
+      add :sell_count_corp, :bigint
+      add :sell_count_ind, :bigint
+      add :sell_volume_corp, :bigint
+      add :sell_volume_ind, :bigint
+      add :status, :string
+      add :queue_status, :string
+      add :stock_holders, {:array, :map}
+      add :total_count, :bigint
+      add :trade_count, :bigint
+      add :trade_total_price, :float
+      add :trade_volume, :bigint
+      add :day_closing_price, :float
+      add :yesterday_closing_price, :float
+      add :day_latest_trade_datetime, :timestamptz
+      add :day_latest_trade_local_datetime, :string
+      add :last_update_local_datetime, :string
+      add :stock_id, references(:stocks)
+      timestamps(type: :timestamptz)
+    end
+
+    create index(:stock_data, [:isin])
+    # -----------  Crunched Data -----------------
+    create table(:stock_stats) do
+      add :isin, :string
+      add :index_affect, :float
+      add :index_affect_rank, :float
+      add :pe, :float
+      add :sector_pe, :float
+      add :profit_7_days, :float
+      add :profit_30_days, :float
+      add :profit_91_days, :float
+      add :profit1_82_days, :float
+      add :profit_365_days, :float
+      add :profit_all_days, :float
+      add :month_profit_rank, :int
+      add :month_profit_rank_group, :int
+      add :market_value_rank, :int
+      add :market_value_rank_group, :int
+      add :trade_volume_rank, :int
+      add :trade_volume_rank_group, :int
+      add :liquidity, :float
+      add :correlation_with_dollar, :float
+      add :correlation_with_gold, :float
+      add :correlation_with_oil, :float
+      add :correlation_with_market_index, :float
+      add :online_interest_rank, :int
+      add :stock_id, references(:stocks)
+      # --------------------------------------------
+      timestamps(type: :timestamptz)
+    end
+
+    create index(:stock_stats, [:isin])
+    create index(:stock_stats, [:liquidity])
   end
 end

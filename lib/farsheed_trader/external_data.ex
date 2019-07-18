@@ -1,6 +1,22 @@
 defmodule FarTrader.ExternalData do
   @moduledoc false
   alias FarTrader.Market
+  alias FarTrader.Utils
+  alias FarTrader.Repo
+  alias FarTrader.Stock
+  # import Ecto.Query, only: [from: 2]
+
+  @doc "get's chart history data from sahamyab.com"
+  def tradingview_history(isin) do
+    stock = Stock |> Repo.get_by(isin: isin)
+
+    url =
+      "https://www.sahamyab.com/guest/tradingview/history?adjustment=&symbol=#{stock.fa_symbol}&from=1&to=999999999999999"
+      |> URI.encode()
+
+    %HTTPoison.Response{:status_code => 200, :body => body} = Utils.http_get(url)
+    body |> Jason.decode()
+  end
 
   @doc "gets market overview from `tse.ir`"
   @spec tse_overview() :: map()

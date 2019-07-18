@@ -1,0 +1,4 @@
+stocks will have a table with basic data
+stocks will have a related table for daily/hourly valid data
+stocks will have a related table for other usuful data 
+stocks will have a related table for ....
