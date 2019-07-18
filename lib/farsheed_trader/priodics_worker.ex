@@ -63,7 +63,7 @@ defmodule FarTrader.Periodically do
           func = data |> elem(1)
           params = data |> elem(2)
           sleeptime = data |> elem(3)
-          IO.inspect({:scedueling, task, sleeptime})
+          # IO.inspect({:scedueling, task, sleeptime})
           Process.send_after(self(), {:work, task, module, func, params}, sleeptime)
         end)
     end
