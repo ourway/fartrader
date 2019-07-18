@@ -244,6 +244,7 @@ defmodule EasyTrader.APIs do
   @moduledoc "Easy Trader REStful related apis"
   alias EasyTrader.Auth
   alias FarTrader.Repo
+  alias FarTrader.Stock
   alias FarTrader.Utils
   @master_account "amir"
 
@@ -256,19 +257,49 @@ defmodule EasyTrader.APIs do
     TE: "Trailers"
   ]
 
-  def update_stock_data(isin) do
+  def update_stock_data(stock) do
     url = "https://easytrader.emofid.com/MarketData/GetTicker"
-    {:ok, payload} = %{isin: isin} |> Jason.encode()
+    {:ok, payload} = %{isin: stock.isin} |> Jason.encode()
     cookies = @master_account |> Auth.get_credentials()
     %HTTPoison.Response{:body => body} = url |> Utils.http_post(payload, @rest_headers, cookies)
+    {:ok, %{"result" => true, "stock" => %{"stockData" => data}}} = body |> Jason.decode()
+
+    {:ok, result} =
+      stock
+      |> Stock.changeset(%{
+        base_volume: data["basisVolume"]
+      })
+      |> Repo.update()
+
+    result
   end
 
-  def update_db_tickers do
+  def get_stock_list do
     url = "https://easytrader.emofid.com/MarketData/GetTickers"
     {:ok, payload} = %{} |> Jason.encode()
     cookies = @master_account |> Auth.get_credentials()
     %HTTPoison.Response{:body => body} = url |> Utils.http_post(payload, @rest_headers, cookies)
     {:ok, stocks} = body |> Jason.decode()
+    stocks
+  end
+
+  def add_stocks_to_db do
+    list = get_stock_list()
+
+    Repo.transaction(fn ->
+      list
+      |> Enum.map(fn s ->
+        %Stock{
+          isin: s["isin"],
+          market_unit: s["marketUnit"],
+          symbol: s["symbol"],
+          fa_symbol: s["symbol"],
+          name: s["title"],
+          fa_name: s["title"]
+        }
+        |> Repo.insert(on_conflict: :nothing)
+      end)
+    end)
   end
 
   def get_orders(cookies) do

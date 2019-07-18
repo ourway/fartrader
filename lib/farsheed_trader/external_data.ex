@@ -6,6 +6,37 @@ defmodule FarTrader.ExternalData do
   alias FarTrader.Stock
   # import Ecto.Query, only: [from: 2]
 
+  def get_symbol_basic_info(isin) do
+    stock = Stock |> Repo.get_by(isin: isin)
+    epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
+    url = "https://www.sahamyab.com/guest/twiter/symbolInfo?v=0.1&_=#{epoch}"
+
+    {:ok, payload} =
+      %{symbol: stock.fa_symbol, price: true, bestLimits: true, full: true} |> Jason.encode()
+
+    %HTTPoison.Response{:status_code => 200, :body => body} =
+      Utils.http_post(url, payload, [{"Content-Type", "application/json"}])
+
+    body |> Jason.decode()
+  end
+
+  def update_stock_basic_info(stock) do
+    {:ok, data} = stock.isin |> get_symbol_basic_info()
+
+    {:ok, result} =
+      stock
+      |> Stock.changeset(%{
+        ins_code: data["InsCode"],
+        corp_name: data["corpName"],
+        industry: data["sectionName"],
+        sub_industry: data["subSectionName"],
+        status: data["status"]
+      })
+      |> Repo.update()
+
+    result
+  end
+
   @doc "get's chart history data from sahamyab.com"
   def tradingview_history(isin) do
     stock = Stock |> Repo.get_by(isin: isin)

@@ -38,21 +38,6 @@ defmodule FarTrader.Repo.Migrations.Symbol do
 
     create unique_index(:markets, [:name])
 
-    create table(:tradeviews) do
-      add :isin, :string
-      add :unixtime, {:array, :bigint}
-      add :closing_price, {:array, :float}
-      add :highest_price, {:array, :float}
-      add :lowest_price, {:array, :float}
-      add :opening_price, {:array, :float}
-      add :value, {:array, :float}
-      add :push_id, :string
-
-      timestamps(type: :timestamptz)
-    end
-
-    create unique_index(:tradeviews, [:isin])
-
     create table(:stocks) do
       # ------------  CORE   -------------
       add :fa_symbol, :string
@@ -67,11 +52,10 @@ defmodule FarTrader.Repo.Migrations.Symbol do
       add :market_unit, :string
       add :base_volume, :bigint
       add :corp_name, :string
-      add :estimated_eps, :float
-      add :section_name, :string
       add :market_type, :string
       add :industry, :string
       add :industry_code, :integer
+      add :status, :string
       add :sub_industry, :string
       add :sub_industry_code, :string
       timestamps(type: :timestamptz)
@@ -79,6 +63,7 @@ defmodule FarTrader.Repo.Migrations.Symbol do
 
     create index(:stocks, [:symbol])
     create index(:stocks, [:name])
+    create index(:stocks, [:status])
     create unique_index(:stocks, [:isin])
 
     create table(:stock_data) do
@@ -90,7 +75,6 @@ defmodule FarTrader.Repo.Migrations.Symbol do
       add :pre_closing_price, :float
       add :first_traded_price, :float
       add :last_traded_price, :float
-      add :closing_price, :float
       add :best_buy_quantity, :bigint
       add :best_buy_price, :float
       add :best_sell_price, :float
@@ -107,7 +91,6 @@ defmodule FarTrader.Repo.Migrations.Symbol do
       add :min_allow_price, :float
       add :min_allow_volume, :bigint
       add :min_price, :float
-      add :sector_pe, :float
       add :sell_count_corp, :bigint
       add :sell_count_ind, :bigint
       add :sell_volume_corp, :bigint
@@ -119,20 +102,21 @@ defmodule FarTrader.Repo.Migrations.Symbol do
       add :trade_count, :bigint
       add :trade_total_price, :float
       add :trade_volume, :bigint
-      add :day_closing_price, :float
+      add :closing_price, :float
       add :yesterday_closing_price, :float
-      add :day_latest_trade_datetime, :timestamptz
-      add :day_latest_trade_local_datetime, :string
-      add :last_update_local_datetime, :string
+      add :latest_trade_datetime, :timestamptz
+      add :latest_trade_local_datetime, :string
       add :stock_id, references(:stocks)
       timestamps(type: :timestamptz)
     end
 
     create index(:stock_data, [:isin])
+    create unique_index(:stock_data, [:isin, :latest_trade_local_datetime])
     # -----------  Crunched Data -----------------
     create table(:stock_stats) do
       add :isin, :string
       add :index_affect, :float
+      add :estimated_eps, :float
       add :index_affect_rank, :float
       add :pe, :float
       add :sector_pe, :float
@@ -161,5 +145,20 @@ defmodule FarTrader.Repo.Migrations.Symbol do
 
     create index(:stock_stats, [:isin])
     create index(:stock_stats, [:liquidity])
+
+    create table(:tradeviews) do
+      add :isin, :string
+      add :unixtime, {:array, :bigint}
+      add :closing_price, {:array, :float}
+      add :highest_price, {:array, :float}
+      add :lowest_price, {:array, :float}
+      add :opening_price, {:array, :float}
+      add :value, {:array, :float}
+      add :stock_id, references(:stocks)
+
+      timestamps(type: :timestamptz)
+    end
+
+    create unique_index(:tradeviews, [:isin])
   end
 end
