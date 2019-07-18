@@ -51,7 +51,8 @@ defmodule FarTrader.MixProject do
       {:money, "~> 1.4"},
       {:rihanna, "~> 1.3"},
       {:jalaali, "~> 0.3"},
-      {:persian, "~> 0.1"}
+      {:persian, "~> 0.1"},
+      {:exml, "~> 0.1.1"}
     ]
   end
 

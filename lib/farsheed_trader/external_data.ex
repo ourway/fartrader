@@ -1,65 +1,158 @@
 defmodule FarTrader.ExternalData do
   @moduledoc false
+  alias Ecto.Changeset
   alias FarTrader.Market
   alias FarTrader.Utils
   alias FarTrader.Repo
   alias FarTrader.Stock
+  alias FarTrader.StockData
   # import Ecto.Query, only: [from: 2]
+  #
+  def get_price(stock) do
+    xml = """
+    <?xml version="1.0" encoding="utf-8"?>
+    <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <GetSymbolPrice xmlns="http://tempuri.org/">
+            <nscCode>#{stock.isin}</nscCode>
+        </GetSymbolPrice>
+    </soap:Body>
+    </soap:Envelope>
+    """
 
-  def get_corp_info(stock) do
+    headers = [{"Content-Type", "text/xml"}, {"SOAPAction", "http://tempuri.org/GetSymbolPrice"}]
+
+    case Utils.http_post("http://tadbirrlc.com/WebService/WS_MobileV2.asmx", xml, headers) do
+      %HTTPoison.Response{:status_code => 200, :body => body} ->
+        doc = body |> Exml.parse()
+
+        _is_negative = doc |> Exml.get("//IsNegative")
+        _is_right = doc |> Exml.get("//IsRight")
+        is_farabourse = doc |> Exml.get("//IsFaraBourse")
+        _isin = doc |> Exml.get("//NscCode")
+        last_traded_price = doc |> Exml.get("//LastTradedPrice")
+        real_change_price = doc |> Exml.get("//RealChangePrice")
+        mantissa = doc |> Exml.get("//Mantissa")
+        closing_price = doc |> Exml.get("//ClosingPrice")
+        high_allowed_price = doc |> Exml.get("//HighAllowedPrice")
+        low_allowe_dprice = doc |> Exml.get("//LowAllowedPrice")
+        price_var = doc |> Exml.get("//PriceVar")
+        price_change = doc |> Exml.get("//PriceChange")
+        total_number_ofshares_traded = doc |> Exml.get("//TotalNumberOfSharesTraded")
+
+      %HTTPoison.Response{:status_code => _} ->
+        :error
+    end
+  end
+
+  def get_trade_history(stock) do
+    epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
+    url = "http://www.tsetmc.com/tsev2/data/TradeDetail.aspx?i=#{stock.ins_code}&_=#{epoch}"
+
+    case url |> Utils.http_get() do
+      %HTTPoison.Response{:status_code => 200, :body => body} ->
+        body
+        |> :zlib.gunzip()
+        |> Exml.parse()
+        |> Exml.get("//row")
+        |> Enum.map(fn h ->
+          # [_, _, _, "09:00:40", _, "100000", _, "4200.00", _] = h
+          [_, _, _, time, _, count, _, price, _] = h
+          {time, count, price}
+        end)
+
+      %HTTPoison.Response{:status_code => _} ->
+        :error
+    end
+  end
+
+  def update_corp_info(stock) do
+    case stock.market_unit in [
+           #  "ETFFix",
+           #  "MaskanFaraBourse",
+           #  "ETFMixed",
+           #  "BourseKalaGovahiSekkeh",
+           #  "ETFStock",
+           "Exchange"
+           #  "ETFZaminSakhteman"
+         ] do
+      true ->
+        stock |> tse_corp_info()
+
+      false ->
+        :continue
+    end
+  end
+
+  def tse_corp_info(stock) do
     epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
     url = "http://tse.ir/json/Instrument/BasicInfo/BasicInfo_#{stock.isin}.html?updated=#{epoch}"
-    %HTTPoison.Response{:status_code => 200, :body => body} = Utils.http_get(url)
 
-    [
-      _,
-      _isin,
-      _,
-      corp_name,
-      _,
-      _fa_symbol,
-      _,
-      en_name,
-      _,
-      en_symbol,
-      _,
-      cisin,
-      _,
-      market_type,
-      _,
-      industry,
-      _,
-      industry_code,
-      _,
-      sub_industry,
-      _,
-      sub_industry_code
-    ] =
-      body
-      |> Floki.parse()
-      |> Floki.find("tr td")
-      |> Enum.map(fn x -> x |> elem(2) |> List.last() end)
+    case Utils.http_get(url) do
+      %HTTPoison.Response{:status_code => 200, :body => body} ->
+        try do
+          [
+            _,
+            _isin,
+            _,
+            corp_name,
+            _,
+            _fa_symbol,
+            _,
+            en_name,
+            _,
+            en_symbol,
+            _,
+            cisin,
+            _,
+            market_type,
+            _,
+            industry,
+            _,
+            industry_code,
+            _,
+            sub_industry,
+            _,
+            sub_industry_code
+          ] =
+            body
+            |> Floki.parse()
+            |> Floki.find("tr td")
+            |> Enum.map(fn x -> x |> elem(2) |> List.last() end)
 
-    stock
-    |> Stock.changeset(%{
-      en_name: en_name,
-      cisin: cisin,
-      en_symbol: en_symbol,
-      market_type: market_type,
-      industry: industry,
-      sub_industry: sub_industry,
-      industry_code: industry_code |> String.to_integer(),
-      sub_industry_code: sub_industry_code |> String.to_integer(),
-      corp_name: corp_name
-    })
+          {:ok, result} =
+            stock
+            |> Stock.changeset(%{
+              en_name: en_name,
+              cisin: cisin,
+              en_symbol: en_symbol,
+              market_type: market_type |> Persian.fix(),
+              industry: industry |> Persian.fix(),
+              sub_industry: sub_industry |> Persian.fix(),
+              industry_code: industry_code |> String.to_integer(),
+              sub_industry_code: sub_industry_code |> String.to_integer(),
+              corp_name: corp_name |> Persian.fix()
+            })
+            |> Repo.update()
+
+          result
+        rescue
+          MatchError ->
+            stock
+        end
+
+      %HTTPoison.Response{:status_code => 404} ->
+        :upstream_error
+        stock
+    end
   end
 
   @doc """
     Get latest stock information from:
       `http://tse.ir/json/Instrument/info_IRO1ALMR0001.json`
   """
-  @spec get_symbol_info(binary()) :: map()
-  def get_symbol_info(isin) do
+  @spec get_tse_symbol_info(binary()) :: map()
+  def get_tse_symbol_info(isin) do
     epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
     url = "http://tse.ir/json/Instrument/info_#{isin}.json?#{epoch}"
 
@@ -114,11 +207,11 @@ defmodule FarTrader.ExternalData do
   """
   @spec update_symbol_info(binary()) :: map()
   def update_symbol_info(isin) do
-    data = isin |> get_symbol_info
-    old_stock = Stock |> Repo.get_by(isin: isin)
+    # data = isin |> get_symbol_info
+    # old_stock = Stock |> Repo.get_by(isin: isin)
 
-    last_update_datetime =
-      data |> Map.get("header") |> List.last() |> Map.get("time") |> tse_time_to_jalali
+    # last_update_datetime =
+    #  data |> Map.get("header") |> List.last() |> Map.get("time") |> tse_time_to_jalali
 
     #    case old_stock.day_latest_trade_local_datetime == data |> Map.get("tradeDate") do
     #      true ->
@@ -207,18 +300,77 @@ defmodule FarTrader.ExternalData do
   def update_stock_basic_info(stock) do
     {:ok, data} = stock.isin |> get_symbol_basic_info()
 
+    jd =
+      Regex.named_captures(
+        ~r/(?<jyear>[\d]{4})\/(?<jmon>[\d]{2})\/(?<jday>[\d]{2})\s(?<hour>[\d]{2}):(?<minute>[\d]{2}):(?<second>[\d]{2})/,
+        data["date"]
+      )
+
+    datetime =
+      Utils.jalali_to_datetime(
+        jd["jyear"] |> String.to_integer(),
+        jd["jmon"] |> String.to_integer(),
+        jd["jday"] |> String.to_integer(),
+        jd["hour"] |> String.to_integer(),
+        jd["minute"] |> String.to_integer(),
+        jd["second"] |> String.to_integer()
+      )
+
+    record =
+      %StockData{
+        # important as it will lock to this
+        latest_trade_datetime: datetime,
+        latest_trade_local_datetime: data["date"],
+        isin: stock.isin,
+        trade_count: data["tradeCount"],
+        # pe: data["PE"],
+        min_allowed_volume: data["minAllowVolume"],
+        # eps: data["estimatedEPS"],
+        sell_volume_corp: data["sellVolumeCorp"],
+        min_allowed_price: data["minAllowPrice"] * 1.0,
+        sell_count_corp: data["sellCountCorp"],
+        buy_count_corp: data["buyCountCorp"],
+        max_price: data["maxPrice"] * 1.0,
+        min_price: data["minPrice"] * 1.0,
+        # sector_pe: data["sectorPE"],
+        trade_total_price: data["tradeTotalPrice"] * 1.0,
+        market_value: data["marketValue"] * 1.0,
+        buy_volume_corp: data["buyVolumeCorp"],
+        sell_count_ind: data["sellCountInd"],
+        buy_volume_ind: data["buyVolumeInd"],
+        max_allowed_volume: data["maxAllowVolume"],
+        status: data["status"],
+        trade_volume: data["tradeVolume"],
+        max_allowed_price: data["maxAllowPrice"] * 1.0,
+        stock_holders: data["stockholders"],
+        first_traded_price: data["firstPrice"] * 1.0,
+        closing_price: data["closingPrice"] * 1.0,
+        yesterday_closing_price: data["yesterdayPrice"] * 1.0,
+        min_price: data["minPrice"] * 1.0,
+        queue_status: data["q_status"],
+        best_limits: data["bestLimits"],
+        sell_volume_ind: data["sellVolumeInd"],
+        last_traded_price: data["lastPrice"] * 1.0,
+        quantity: data["totalCount"],
+        buy_count_ind: data["buyCountInd"]
+      }
+      |> StockData.changeset(%{})
+      |> Changeset.put_assoc(:stock, stock)
+      |> Repo.insert()
+
     {:ok, result} =
       stock
       |> Stock.changeset(%{
         ins_code: data["InsCode"],
-        corp_name: data["corpName"],
-        industry: data["sectionName"],
-        sub_industry: data["subSectionName"],
+        corp_name: data["corpName"] |> Persian.fix(),
+        industry: data["sectionName"] |> Persian.fix(),
+        sub_industry: data["subSectionName"] |> Persian.fix(),
         status: data["status"]
       })
       |> Repo.update()
 
-    result
+    # result
+    {data, record}
   end
 
   @doc "get's chart history data from sahamyab.com"

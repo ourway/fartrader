@@ -69,27 +69,21 @@ defmodule FarTrader.Repo.Migrations.Symbol do
     create table(:stock_data) do
       # -------------  DAY ---------------
       add :isin, :string
-      add :adtv, :bigint
       add :quantity, :bigint
-      add :value, :float
       add :pre_closing_price, :float
       add :first_traded_price, :float
       add :last_traded_price, :float
-      add :best_buy_quantity, :bigint
-      add :best_buy_price, :float
-      add :best_sell_price, :float
-      add :best_sell_quantity, :bigint
       add :best_limits, {:array, :map}
       add :buy_count_corp, :bigint
       add :buy_count_ind, :bigint
       add :buy_volume_corp, :bigint
       add :buy_volume_ind, :bigint
       add :market_value, :float
-      add :max_allow_price, :float
-      add :max_allow_volume, :bigint
+      add :max_allowed_price, :float
+      add :max_allowed_volume, :bigint
       add :max_price, :float
-      add :min_allow_price, :float
-      add :min_allow_volume, :bigint
+      add :min_allowed_price, :float
+      add :min_allowed_volume, :bigint
       add :min_price, :float
       add :sell_count_corp, :bigint
       add :sell_count_ind, :bigint
@@ -98,7 +92,6 @@ defmodule FarTrader.Repo.Migrations.Symbol do
       add :status, :string
       add :queue_status, :string
       add :stock_holders, {:array, :map}
-      add :total_count, :bigint
       add :trade_count, :bigint
       add :trade_total_price, :float
       add :trade_volume, :bigint
@@ -111,7 +104,7 @@ defmodule FarTrader.Repo.Migrations.Symbol do
     end
 
     create index(:stock_data, [:isin])
-    create unique_index(:stock_data, [:isin, :latest_trade_local_datetime])
+    create unique_index(:stock_data, [:isin, :latest_trade_datetime])
     # -----------  Crunched Data -----------------
     create table(:stock_stats) do
       add :isin, :string
