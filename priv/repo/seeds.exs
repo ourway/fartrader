@@ -20,6 +20,7 @@ Stock
   Rihanna.enqueue({ExternalData, :update_stock_basic_info, [s]})
   Rihanna.enqueue({EasyTrader.APIs, :update_stock_data, [s]})
   Rihanna.enqueue({ExternalData, :update_corp_info, [s]})
+  Rihanna.enqueue({ExternalData, :update_stock_stat_data, [s]})
 end)
 
 # EasyTrader.Auth.get_all_credentials()
