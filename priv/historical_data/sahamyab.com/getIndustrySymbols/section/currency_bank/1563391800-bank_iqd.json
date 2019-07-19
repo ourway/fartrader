@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 3524,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_iqd",
+  "lastPrice": 3524,
+  "maxPrice": 3524,
+  "minPrice": 3524,
+  "name": "دینار_عراق_مرجع",
+  "pushId": "SYMBOL_دینار_عراق_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دینار عراق مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 3524
+}

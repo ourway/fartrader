@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 777.0,
+  "highest_price": 777.0,
+  "isin": "IRO7DIOP0001",
+  "last_traded_price": 750.0,
+  "lowest_price": 710.0,
+  "trade_volume": 224129.0,
+  "unix_time": 1445731200
+}

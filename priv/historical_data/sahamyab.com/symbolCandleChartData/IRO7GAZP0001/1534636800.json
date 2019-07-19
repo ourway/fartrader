@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 5.0e3,
+  "highest_price": 5190.0,
+  "isin": "IRO7GAZP0001",
+  "last_traded_price": 5069.0,
+  "lowest_price": 4899.0,
+  "trade_volume": 2246636.0,
+  "unix_time": 1534636800
+}

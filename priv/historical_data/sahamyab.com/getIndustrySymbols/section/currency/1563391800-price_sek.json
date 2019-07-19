@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 12720,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_sek",
+  "lastPrice": 12720,
+  "maxPrice": 12970,
+  "minPrice": 12630,
+  "name": "کرون_سوئد_آزاد",
+  "pushId": "SYMBOL_کرون_سوئد_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "کرون سوئد آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 12720
+}

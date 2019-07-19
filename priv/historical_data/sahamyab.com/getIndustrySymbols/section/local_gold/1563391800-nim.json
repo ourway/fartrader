@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 21980000,
+  "corpName": " قیمت های طلا در بازار داخلی",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "nim",
+  "lastPrice": 21980000,
+  "maxPrice": 21980000,
+  "minPrice": 21380000,
+  "name": "نیم_سکه",
+  "pushId": "SYMBOL_نیم_سکه",
+  "q_status": null,
+  "sectionName": " قیمت های طلا در بازار داخلی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "نیم سکه",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 21980000
+}

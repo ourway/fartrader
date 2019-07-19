@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 60.0,
+  "highest_price": 62.0,
+  "isin": "IRR7TVNP0101",
+  "last_traded_price": 62.0,
+  "lowest_price": 60.0,
+  "trade_volume": 4225219.0,
+  "unix_time": 1548460800
+}

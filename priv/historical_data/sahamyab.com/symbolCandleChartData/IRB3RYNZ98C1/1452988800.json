@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 1000102.0,
+  "highest_price": 1004111.0,
+  "isin": "IRB3RYNZ98C1",
+  "last_traded_price": 1000106.0,
+  "lowest_price": 1000102.0,
+  "trade_volume": 55.0,
+  "unix_time": 1452988800
+}

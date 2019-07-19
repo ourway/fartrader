@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 66.723,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/24 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_rupee",
+  "lastPrice": 66.723,
+  "maxPrice": 67,
+  "minPrice": 66.717,
+  "name": "روپیه_هند_نرخ_برابری",
+  "pushId": "SYMBOL_روپیه_هند_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "روپیه هند نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 66.723
+}

@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 7777.0,
+  "highest_price": 7780.0,
+  "isin": "IRO1MAPN0001",
+  "last_traded_price": 7740.0,
+  "lowest_price": 7.6e3,
+  "trade_volume": 7055096.0,
+  "unix_time": 1490745600
+}

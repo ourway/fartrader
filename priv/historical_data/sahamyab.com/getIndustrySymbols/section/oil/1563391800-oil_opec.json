@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 64.6,
+  "corpName": "قیمت های نفت",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "oil_opec",
+  "lastPrice": 64.6,
+  "maxPrice": 64.6,
+  "minPrice": 64.6,
+  "name": "نفت_اوپک",
+  "pushId": "SYMBOL_نفت_اوپک",
+  "q_status": null,
+  "sectionName": "قیمت های نفت",
+  "status": "A",
+  "subSectionName": null,
+  "title": "نفت اوپک",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 64.6
+}

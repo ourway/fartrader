@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 444.0,
+  "highest_price": 452.0,
+  "isin": "IRO1BSDR0001",
+  "last_traded_price": 441.0,
+  "lowest_price": 433.0,
+  "trade_volume": 79324624.0,
+  "unix_time": 1560729600
+}

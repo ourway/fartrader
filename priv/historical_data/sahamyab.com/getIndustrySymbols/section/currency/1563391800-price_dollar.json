@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 115000,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_dollar",
+  "lastPrice": 115000,
+  "maxPrice": 115000,
+  "minPrice": 114890,
+  "name": "دلار_آزاد",
+  "pushId": "SYMBOL_دلار_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دلار آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 115000
+}

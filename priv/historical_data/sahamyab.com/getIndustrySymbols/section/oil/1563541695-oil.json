@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 55.56,
+  "corpName": "قیمت های نفت",
+  "date": "1398/04/28 17:38:15",
+  "firstPrice": 0,
+  "id": "oil",
+  "lastPrice": 55.56,
+  "maxPrice": 56.34,
+  "minPrice": 55.5,
+  "name": "نفت_سبک",
+  "pushId": "SYMBOL_نفت_سبک",
+  "q_status": null,
+  "sectionName": "قیمت های نفت",
+  "status": "A",
+  "subSectionName": null,
+  "title": "نفت سبک",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 55.580000000000005
+}

@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 1001299.0,
+  "highest_price": 1001998.0,
+  "isin": "IRB4SR020081",
+  "last_traded_price": 1001998.0,
+  "lowest_price": 1001299.0,
+  "trade_volume": 600.0,
+  "unix_time": 1512345600
+}

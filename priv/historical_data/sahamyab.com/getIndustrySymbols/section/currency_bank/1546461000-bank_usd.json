@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 42000,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1397/10/13 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_usd",
+  "lastPrice": 42000,
+  "maxPrice": 42001,
+  "minPrice": 42000,
+  "name": "دلار_مرجع",
+  "pushId": "SYMBOL_دلار_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دلار مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 42000
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 11200,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_sar",
+  "lastPrice": 11200,
+  "maxPrice": 11200,
+  "minPrice": 11200,
+  "name": "ریال_عربستان_مرجع",
+  "pushId": "SYMBOL_ریال_عربستان_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "ریال عربستان مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 11200
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 104.2,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/21 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_pakistan_rupee",
+  "lastPrice": 104.2,
+  "maxPrice": 104.21,
+  "minPrice": 102.84,
+  "name": "روپیه_پاکستان_نرخ_برابری",
+  "pushId": "SYMBOL_روپیه_پاکستان_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "روپیه پاکستان نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 104.2
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 64.5318,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/20 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_ruble",
+  "lastPrice": 64.5318,
+  "maxPrice": 65.297,
+  "minPrice": 64.4499,
+  "name": "روبل_روسیه_نرخ_برابری",
+  "pushId": "SYMBOL_روبل_روسیه_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "روبل روسیه نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 64.5318
+}

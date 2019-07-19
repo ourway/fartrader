@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 28960,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_myr",
+  "lastPrice": 28960,
+  "maxPrice": 29510,
+  "minPrice": 28740,
+  "name": "رینگیت_مالزی_آزاد",
+  "pushId": "SYMBOL_رینگیت_مالزی_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "رینگیت مالزی آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 28960
+}

@@ -14,14 +14,57 @@ defmodule FarTrader.ExternalData do
     FarTrader.Stock
     |> FarTrader.Repo.all()
     |> Enum.map(fn s ->
+      nil
       # Rihanna.enqueue({__MODULE__, :save_trade_history, [s]})
       # Rihanna.enqueue({__MODULE__, :save_symbol_ext_data, [s]})
       # Rihanna.enqueue({__MODULE__, :save_symbol_intro, [s]})
       # Rihanna.enqueue({__MODULE__, :save_stock_watch_charts, [s]})
-      Rihanna.enqueue({__MODULE__, :save_symbol_info, [s]})
+      # Rihanna.enqueue({__MODULE__, :save_symbol_info, [s]})
+      # Rihanna.enqueue({__MODULE__, :save_market_info, [s]})
     end)
 
     # Rihanna.enqueue({__MODULE__, :save_industry_symbols, []})
+  end
+
+  @doc """
+    saves market data into historical_data.
+    must be used like this:
+      iex> [:ok | _] = save_market_info()
+  """
+  def save_market_info do
+    epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
+    basedir = :code.priv_dir(:farsheed_trader)
+
+    headers = [
+      {"accept", "application/json"}
+    ]
+
+    for market <- ["bourse", "farabourse"] do
+      savedir = "#{basedir}/historical_data/sahamyab.com/getMarketInfo/#{market}"
+
+      url =
+        "https://www.sahamyab.com/api/proxy/symbol/getMarketInfo?type=#{market}&_=#{epoch}"
+        |> URI.encode()
+
+      case Utils.http_get(url, headers) do
+        %HTTPoison.Response{:status_code => 200, :body => body} ->
+          # {unixtime, first_traded_price, highest_price, lowest_price, last_traded_price, volume}
+          rawfilepath = "#{savedir}/raw.json"
+          :ok = File.write(rawfilepath, body)
+          # try to parse data and save
+          {:ok, %{"success" => true, "result" => data}} = body |> Jason.decode()
+          last_update_datetime = data["lastTradeTimeLong"] |> Timex.from_unix(:millisecond)
+          filename = "#{savedir}/#{last_update_datetime |> Timex.to_unix()}.json"
+          {:ok, doc} = data |> Jason.encode(pretty: true)
+          :ok = File.write(filename, doc)
+
+        %HTTPoison.Response{:status_code => _} ->
+          :error
+
+        {:error, reason} ->
+          reason
+      end
+    end
   end
 
   @doc """
@@ -29,7 +72,6 @@ defmodule FarTrader.ExternalData do
   """
   def save_industry_symbols do
     now = Timex.now("Asia/Tehran")
-    datefrm = "#{now.year}-#{now.month}-#{now.day}-#{now.hour}"
     epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
     basedir = :code.priv_dir(:farsheed_trader)
 
@@ -48,7 +90,8 @@ defmodule FarTrader.ExternalData do
           "local_gold",
           "oil"
         ] do
-      savedir = "#{basedir}/historical_data/sahamyab.com/getIndustrySymbols/section"
+      savedir = "#{basedir}/historical_data/sahamyab.com/getIndustrySymbols/section/#{section}"
+      File.mkdir(savedir)
 
       url =
         "https://www.sahamyab.com/api/proxy/symbol/getIndustrySymbols?tgju_section=#{section}&_=#{
@@ -59,16 +102,32 @@ defmodule FarTrader.ExternalData do
       case Utils.http_get(url, headers) do
         %HTTPoison.Response{:status_code => 200, :body => body} ->
           # {unixtime, first_traded_price, highest_price, lowest_price, last_traded_price, volume}
-          rawfilepath = "#{savedir}/#{section}-#{datefrm}.json"
+          rawfilepath = "#{savedir}/raw.json"
           :ok = File.write(rawfilepath, body)
+
+          {:ok, %{"success" => true, "result" => list}} = body |> Jason.decode()
+
+          list
+          |> Enum.map(fn e ->
+            utime = e["date"] |> Utils.formated_jdate_to_datetime() |> Timex.to_unix()
+            id = e["id"]
+            bname = "#{utime}-#{id}.json"
+            fpath = "#{savedir}/#{bname}"
+            {:ok, doc} = e |> Jason.encode(pretty: true)
+            :ok = File.write(fpath, doc)
+          end)
 
         %HTTPoison.Response{:status_code => _} ->
           :error
+
+        {:error, reason} ->
+          reason
       end
     end
 
     for index <- ["selected", "industry", "topIndustry"] do
-      savedir = "#{basedir}/historical_data/sahamyab.com/getIndustrySymbols/index"
+      savedir = "#{basedir}/historical_data/sahamyab.com/getIndustrySymbols/index/#{index}"
+      File.mkdir(savedir)
 
       url =
         "https://www.sahamyab.com/api/proxy/symbol/getIndustrySymbols?index=#{index}&_=#{epoch}"
@@ -77,8 +136,19 @@ defmodule FarTrader.ExternalData do
       case Utils.http_get(url, headers) do
         %HTTPoison.Response{:status_code => 200, :body => body} ->
           # {unixtime, first_traded_price, highest_price, lowest_price, last_traded_price, volume}
-          rawfilepath = "#{savedir}/#{index}-#{datefrm}.json"
+          rawfilepath = "#{savedir}/raw.json"
           :ok = File.write(rawfilepath, body)
+          {:ok, %{"success" => true, "result" => list}} = body |> Jason.decode()
+
+          list
+          |> Enum.map(fn e ->
+            utime = e["date"] |> Utils.formated_jdate_to_datetime() |> Timex.to_unix()
+            id = e["id"]
+            bname = "#{utime}-#{id}.json"
+            fpath = "#{savedir}/#{bname}"
+            {:ok, doc} = e |> Jason.encode(pretty: true)
+            :ok = File.write(fpath, doc)
+          end)
 
         %HTTPoison.Response{:status_code => _} ->
           :error
@@ -117,6 +187,9 @@ defmodule FarTrader.ExternalData do
 
       %HTTPoison.Response{:status_code => _} ->
         :error
+
+      {:error, reason} ->
+        reason
     end
   end
 
@@ -151,6 +224,9 @@ defmodule FarTrader.ExternalData do
 
       %HTTPoison.Response{:status_code => _} ->
         :error
+
+      {:error, reason} ->
+        reason
     end
   end
 
@@ -185,6 +261,9 @@ defmodule FarTrader.ExternalData do
 
       %HTTPoison.Response{:status_code => _} ->
         :error
+
+      {:error, reason} ->
+        reason
     end
   end
 
@@ -204,9 +283,20 @@ defmodule FarTrader.ExternalData do
         # {unixtime, first_traded_price, highest_price, lowest_price, last_traded_price, volume}
         rawfilepath = "#{savedir}/raw.json"
         :ok = File.write(rawfilepath, body)
+        {:ok, %{"success" => true}} = {:ok, data} = body |> Jason.decode()
+
+        last_update_unixtime =
+          data["date"] |> Utils.formated_jdate_to_datetime() |> Timex.to_unix()
+
+        fname = "#{savedir}/#{last_update_unixtime}-#{stock.isin}.json"
+        {:ok, doc} = data |> Jason.encode(pretty: true)
+        :ok = File.write(fname, doc)
 
       %HTTPoison.Response{:status_code => _} ->
         :error
+
+      {:error, reason} ->
+        reason
     end
   end
 
@@ -238,9 +328,33 @@ defmodule FarTrader.ExternalData do
         # {unixtime, first_traded_price, highest_price, lowest_price, last_traded_price, volume}
         rawfilepath = "#{savedir}/raw.json"
         :ok = File.write(rawfilepath, body)
+        {:ok, %{"success" => true, "res" => data}} = body |> Jason.decode()
+
+        data
+        |> Enum.map(fn h ->
+          [utime, first_traded_price, highest_price, lowest_price, latest_traded_price, volume] =
+            h
+
+          d = %{
+            isin: stock.isin,
+            unix_time: utime |> Timex.from_unix(:millisecond) |> Timex.to_unix,
+            first_traded_price: first_traded_price,
+            last_traded_price: latest_traded_price,
+            lowest_price: lowest_price,
+            highest_price: highest_price,
+            trade_volume: volume
+          }
+          {:ok, doc} = d |> Jason.encode(pretty: true)
+          fname = "#{savedir}/#{d.unix_time}.json"
+          :ok = File.write(fname, doc)
+
+        end)
 
       %HTTPoison.Response{:status_code => _} ->
         :error
+
+      {:error, reason} ->
+        reason
     end
   end
 
@@ -278,6 +392,9 @@ defmodule FarTrader.ExternalData do
 
       %HTTPoison.Response{:status_code => _} ->
         :error
+
+      {:error, reason} ->
+        reason
     end
   end
 
@@ -299,6 +416,9 @@ defmodule FarTrader.ExternalData do
 
       %HTTPoison.Response{:status_code => _} ->
         :error
+
+      {:error, reason} ->
+        reason
     end
   end
 
@@ -325,6 +445,9 @@ defmodule FarTrader.ExternalData do
     url = "http://tse.ir/json/Instrument/BasicInfo/BasicInfo_#{stock.isin}.html?updated=#{epoch}"
 
     case Utils.http_get(url) do
+      {:error, reason} ->
+        reason
+
       %HTTPoison.Response{:status_code => 200, :body => body} ->
         try do
           [
@@ -399,6 +522,9 @@ defmodule FarTrader.ExternalData do
       %HTTPoison.Response{:status_code => 200, :body => body} ->
         {:ok, data} = body |> Jason.decode()
         data
+
+      {:error, reason} ->
+        reason
     end
   end
 
@@ -536,21 +662,7 @@ defmodule FarTrader.ExternalData do
   def update_stock_basic_info(stock) do
     {:ok, data} = stock.isin |> get_symbol_basic_info()
 
-    jd =
-      Regex.named_captures(
-        ~r/(?<jyear>[\d]{4})\/(?<jmon>[\d]{2})\/(?<jday>[\d]{2})\s(?<hour>[\d]{2}):(?<minute>[\d]{2}):(?<second>[\d]{2})/,
-        data["date"]
-      )
-
-    datetime =
-      Utils.jalali_to_datetime(
-        jd["jyear"] |> String.to_integer(),
-        jd["jmon"] |> String.to_integer(),
-        jd["jday"] |> String.to_integer(),
-        jd["hour"] |> String.to_integer(),
-        jd["minute"] |> String.to_integer(),
-        jd["second"] |> String.to_integer()
-      )
+    datetime = data["date"] |> Utils.formated_jdate_to_datetime()
 
     record =
       %StockData{

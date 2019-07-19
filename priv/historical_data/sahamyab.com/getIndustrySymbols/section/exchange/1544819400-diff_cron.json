@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 8.4847,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/24 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_cron",
+  "lastPrice": 8.4847,
+  "maxPrice": 8.5354,
+  "minPrice": 8.4669,
+  "name": "کرون_نرخ_برابری",
+  "pushId": "SYMBOL_کرون_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "کرون نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 8.4847
+}

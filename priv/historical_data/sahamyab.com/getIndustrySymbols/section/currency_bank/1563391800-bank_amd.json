@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 8830,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_amd",
+  "lastPrice": 8830,
+  "maxPrice": 8830,
+  "minPrice": 8830,
+  "name": "درام_ارمنستان_مرجع",
+  "pushId": "SYMBOL_درام_ارمنستان_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "درام ارمنستان مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 8830
+}

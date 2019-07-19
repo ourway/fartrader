@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 6250.0,
+  "highest_price": 6340.0,
+  "isin": "IRO1MOBN0001",
+  "last_traded_price": 6310.0,
+  "lowest_price": 6.2e3,
+  "trade_volume": 4095165.0,
+  "unix_time": 1536105600
+}

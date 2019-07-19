@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 2.9648,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/19 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_lira",
+  "lastPrice": 2.9648,
+  "maxPrice": 2.9929,
+  "minPrice": 2.9614,
+  "name": "لیر_ترکیه_نرخ_برابری",
+  "pushId": "SYMBOL_لیر_ترکیه_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "لیر ترکیه نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 2.9648
+}

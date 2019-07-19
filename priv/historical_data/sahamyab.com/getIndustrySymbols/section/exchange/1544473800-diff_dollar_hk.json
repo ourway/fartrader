@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 7.7564,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/20 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_dollar_hk",
+  "lastPrice": 7.7564,
+  "maxPrice": 7.7575,
+  "minPrice": 7.7531,
+  "name": "دلار_هنگ_گنگ_نرخ_برابری",
+  "pushId": "SYMBOL_دلار_هنگ_گنگ_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دلار هنگ گنگ نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 7.7564
+}

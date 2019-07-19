@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 32623,
+  "corpName": "قیمت ارزهای سنا",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "sana_sell_aed",
+  "lastPrice": 32623,
+  "maxPrice": 32623,
+  "minPrice": 32623,
+  "name": "سامانه_سنا_درهم_فروش",
+  "pushId": "SYMBOL_سامانه_سنا_درهم_فروش",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای سنا",
+  "status": "A",
+  "subSectionName": null,
+  "title": "سامانه سنا درهم فروش",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 32623
+}

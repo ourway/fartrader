@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 10048.0,
+  "highest_price": 10075.0,
+  "isin": "IRT1KMND0001",
+  "last_traded_price": 10075.0,
+  "lowest_price": 10048.0,
+  "trade_volume": 2.01715e7,
+  "unix_time": 1526428800
+}

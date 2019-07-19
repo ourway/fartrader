@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 17910,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_dkk",
+  "lastPrice": 17910,
+  "maxPrice": 18260,
+  "minPrice": 17780,
+  "name": "کرون_دانمارک_آزاد",
+  "pushId": "SYMBOL_کرون_دانمارک_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "کرون دانمارک آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 17910
+}

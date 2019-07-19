@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 10215,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_myr",
+  "lastPrice": 10215,
+  "maxPrice": 10215,
+  "minPrice": 10215,
+  "name": "رینگیت_مالزی_مرجع",
+  "pushId": "SYMBOL_رینگیت_مالزی_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "رینگیت مالزی مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 10215
+}

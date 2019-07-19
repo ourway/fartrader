@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 31790,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_sar",
+  "lastPrice": 31790,
+  "maxPrice": 32350,
+  "minPrice": 31490,
+  "name": "ریال_عربستان_آزاد",
+  "pushId": "SYMBOL_ریال_عربستان_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "ریال عربستان آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 31790
+}

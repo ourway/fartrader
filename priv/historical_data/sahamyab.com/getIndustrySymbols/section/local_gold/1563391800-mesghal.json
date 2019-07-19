@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 17050000,
+  "corpName": " قیمت های طلا در بازار داخلی",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "mesghal",
+  "lastPrice": 17050000,
+  "maxPrice": 17430000,
+  "minPrice": 16990000,
+  "name": "مثقال_طلا",
+  "pushId": "SYMBOL_مثقال_طلا",
+  "q_status": null,
+  "sectionName": " قیمت های طلا در بازار داخلی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "مثقال طلا",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 17050000
+}

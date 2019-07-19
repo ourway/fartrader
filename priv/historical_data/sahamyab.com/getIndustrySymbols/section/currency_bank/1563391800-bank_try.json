@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 7388,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_try",
+  "lastPrice": 7388,
+  "maxPrice": 7388,
+  "minPrice": 7388,
+  "name": "لیر_ترکیه_مرجع",
+  "pushId": "SYMBOL_لیر_ترکیه_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "لیر ترکیه مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 7388
+}

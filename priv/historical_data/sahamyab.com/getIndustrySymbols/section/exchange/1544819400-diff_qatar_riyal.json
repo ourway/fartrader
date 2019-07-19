@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 3.6408,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/24 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_qatar_riyal",
+  "lastPrice": 3.6408,
+  "maxPrice": 3.641,
+  "minPrice": 3.6391,
+  "name": "ریال_قطر_نرخ_برابری",
+  "pushId": "SYMBOL_ریال_قطر_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "ریال قطر نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 3.6408
+}

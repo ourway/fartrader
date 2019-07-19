@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 42765.0,
+  "highest_price": 43505.0,
+  "isin": "IRO1PARS0001",
+  "last_traded_price": 43504.0,
+  "lowest_price": 42462.0,
+  "trade_volume": 1947824.0,
+  "unix_time": 1560729600
+}

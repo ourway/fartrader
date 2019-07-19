@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 555.0,
+  "highest_price": 571.0,
+  "isin": "IRO7PFSP0001",
+  "last_traded_price": 557.0,
+  "lowest_price": 553.0,
+  "trade_volume": 3032077.0,
+  "unix_time": 1527984000
+}

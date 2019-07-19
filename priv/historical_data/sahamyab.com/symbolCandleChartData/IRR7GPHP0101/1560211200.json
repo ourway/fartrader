@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 30001.0,
+  "highest_price": 33001.0,
+  "isin": "IRR7GPHP0101",
+  "last_traded_price": 3.3e4,
+  "lowest_price": 30001.0,
+  "trade_volume": 65734.0,
+  "unix_time": 1560211200
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 3.7467,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/24 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_arabian_riyal",
+  "lastPrice": 3.7467,
+  "maxPrice": 3.7589,
+  "minPrice": 3.7385,
+  "name": "ریال_عربستان_نرخ_برابری",
+  "pushId": "SYMBOL_ریال_عربستان_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "ریال عربستان نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 3.7467
+}

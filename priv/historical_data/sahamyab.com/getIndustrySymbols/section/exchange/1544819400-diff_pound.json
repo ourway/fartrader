@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 0.7498,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/24 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_pound",
+  "lastPrice": 0.7498,
+  "maxPrice": 0.7552,
+  "minPrice": 0.7492,
+  "name": "پوند_نرخ_برابری",
+  "pushId": "SYMBOL_پوند_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "پوند نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 0.7498
+}

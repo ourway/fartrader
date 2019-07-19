@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 1.3556,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/24 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_singapore_dollar",
+  "lastPrice": 1.3556,
+  "maxPrice": 1.3621,
+  "minPrice": 1.3543,
+  "name": "دلار_سنگاپور_نرخ_برابری",
+  "pushId": "SYMBOL_دلار_سنگاپور_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دلار سنگاپور نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 1.3556
+}

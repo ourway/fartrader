@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 42629,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_chf",
+  "lastPrice": 42629,
+  "maxPrice": 42629,
+  "minPrice": 42629,
+  "name": "فرانک_سوئیس_مرجع",
+  "pushId": "SYMBOL_فرانک_سوئیس_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "فرانک سوئیس مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 42629
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 87610,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_sgd",
+  "lastPrice": 87610,
+  "maxPrice": 89300,
+  "minPrice": 86960,
+  "name": "دلار_سنگاپور_آزاد",
+  "pushId": "SYMBOL_دلار_سنگاپور_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دلار سنگاپور آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 87610
+}

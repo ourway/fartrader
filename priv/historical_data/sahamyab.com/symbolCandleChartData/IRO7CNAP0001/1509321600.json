@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 2010.0,
+  "highest_price": 2128.0,
+  "isin": "IRO7CNAP0001",
+  "last_traded_price": 2.1e3,
+  "lowest_price": 2008.0,
+  "trade_volume": 10080089.0,
+  "unix_time": 1509321600
+}

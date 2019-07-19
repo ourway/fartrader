@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 42401.0,
+  "highest_price": 42501.0,
+  "isin": "IRO1HMRZ0001",
+  "last_traded_price": 42050.0,
+  "lowest_price": 42036.0,
+  "trade_volume": 160307.0,
+  "unix_time": 1377475200
+}

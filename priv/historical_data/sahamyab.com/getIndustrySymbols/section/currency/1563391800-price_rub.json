@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 1900,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_rub",
+  "lastPrice": 1900,
+  "maxPrice": 1930,
+  "minPrice": 1880,
+  "name": "روبل_روسیه_آزاد",
+  "pushId": "SYMBOL_روبل_روسیه_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "روبل روسیه آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 1900
+}

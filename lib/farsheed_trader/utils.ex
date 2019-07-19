@@ -38,20 +38,28 @@ defmodule FarTrader.Utils do
 
   @doc "sends http get using a default pool"
   def http_get(url, headers \\ [], cookies \\ []) do
-    {:ok, resp} =
-      HTTPoison.get(url, headers, hackney: [pool: :default, cookie: cookies, recv_timeout: 45_000])
+    case HTTPoison.get(url, headers,
+           hackney: [pool: :default, cookie: cookies, recv_timeout: 45_000]
+         ) do
+      {:ok, resp} ->
+        resp
 
-    resp
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        {:error, reason}
+    end
   end
 
   @doc "sends http post using a default pool"
   def http_post(url, body \\ [], headers \\ [], cookies \\ []) do
-    {:ok, resp} =
-      HTTPoison.post(url, body, headers,
-        hackney: [pool: :default, cookie: cookies, recv_timeout: 45_000]
-      )
+    case HTTPoison.post(url, body, headers,
+           hackney: [pool: :default, cookie: cookies, recv_timeout: 45_000]
+         ) do
+      {:ok, resp} ->
+        resp
 
-    resp
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        {:error, reason}
+    end
   end
 
   @doc "catches Set-Cookie values as list of tuples "
@@ -141,5 +149,26 @@ defmodule FarTrader.Utils do
       "Asia/Tehran"
     )
     |> Timex.to_datetime("Etc/UTC")
+  end
+
+  @doc """
+      example:
+        iex> FarTrader.Utils.formated_jdate_to_datetime "1398/04/28 12:32:53"
+  """
+  def formated_jdate_to_datetime(fjdate) do
+    jd =
+      Regex.named_captures(
+        ~r/(?<jyear>[\d]{4})\/(?<jmon>[\d]{2})\/(?<jday>[\d]{2})\s(?<hour>[\d]{2}):(?<minute>[\d]{2}):(?<second>[\d]{2})/,
+        fjdate
+      )
+
+    jalali_to_datetime(
+      jd["jyear"] |> String.to_integer(),
+      jd["jmon"] |> String.to_integer(),
+      jd["jday"] |> String.to_integer(),
+      jd["hour"] |> String.to_integer(),
+      jd["minute"] |> String.to_integer(),
+      jd["second"] |> String.to_integer()
+    )
   end
 end

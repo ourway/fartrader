@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 3210.0,
+  "highest_price": 3255.0,
+  "isin": "IRO1KRAF0001",
+  "last_traded_price": 3245.0,
+  "lowest_price": 3210.0,
+  "trade_volume": 168830.0,
+  "unix_time": 1442966400
+}

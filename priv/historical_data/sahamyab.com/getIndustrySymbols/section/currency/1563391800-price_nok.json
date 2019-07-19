@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 13860,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_nok",
+  "lastPrice": 13860,
+  "maxPrice": 14130,
+  "minPrice": 13760,
+  "name": "کرون_نروژ_آزاد",
+  "pushId": "SYMBOL_کرون_نروژ_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "کرون نروژ آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 13860
+}

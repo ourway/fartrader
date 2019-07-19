@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 109232,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_omr",
+  "lastPrice": 109232,
+  "maxPrice": 109232,
+  "minPrice": 109232,
+  "name": "ریال_عمان_مرجع",
+  "pushId": "SYMBOL_ریال_عمان_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "ریال عمان مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 109232
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 148800,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_gbp",
+  "lastPrice": 148800,
+  "maxPrice": 151470,
+  "minPrice": 146980,
+  "name": "پوند_آزاد",
+  "pushId": "SYMBOL_پوند_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "پوند آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 148800
+}

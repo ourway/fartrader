@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 2.5e4,
+  "highest_price": 2.52e4,
+  "isin": "IRO3PNLZ0001",
+  "last_traded_price": 24199.0,
+  "lowest_price": 24056.0,
+  "trade_volume": 4717572.0,
+  "unix_time": 1536624000
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 0.301,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/24 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_dinar",
+  "lastPrice": 0.301,
+  "maxPrice": 0.3013,
+  "minPrice": 0.3009,
+  "name": "دینار_نرخ_برابری",
+  "pushId": "SYMBOL_دینار_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دینار نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 0.301
+}

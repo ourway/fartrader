@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 29530,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_aud",
+  "lastPrice": 29530,
+  "maxPrice": 29530,
+  "minPrice": 29530,
+  "name": "دلار_استرالیا_مرجع",
+  "pushId": "SYMBOL_دلار_استرالیا_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دلار استرالیا مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 29530
+}

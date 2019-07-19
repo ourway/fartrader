@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 1532.65,
+  "corpName": "انس های جهانی",
+  "date": "1398/04/28 17:38:47",
+  "firstPrice": 0,
+  "id": "palladium",
+  "lastPrice": 1532.65,
+  "maxPrice": 1534,
+  "minPrice": 1516,
+  "name": "انس_جهانی_پالادیوم",
+  "pushId": "SYMBOL_انس_جهانی_پالادیوم",
+  "q_status": null,
+  "sectionName": "انس های جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "انس جهانی پالادیوم",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 1522.8500000000001
+}

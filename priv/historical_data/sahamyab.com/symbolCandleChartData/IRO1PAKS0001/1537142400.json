@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 6001.0,
+  "highest_price": 6570.0,
+  "isin": "IRO1PAKS0001",
+  "last_traded_price": 6570.0,
+  "lowest_price": 6.0e3,
+  "trade_volume": 1260327.0,
+  "unix_time": 1537142400
+}

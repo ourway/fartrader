@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 34.843,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/24 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_thai",
+  "lastPrice": 34.843,
+  "maxPrice": 34.96,
+  "minPrice": 34.137,
+  "name": "بات_تایلند_نرخ_برابری",
+  "pushId": "SYMBOL_بات_تایلند_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "بات تایلند نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 34.843
+}

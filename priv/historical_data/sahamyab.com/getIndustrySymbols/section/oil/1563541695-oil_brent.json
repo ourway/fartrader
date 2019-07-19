@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 62.38,
+  "corpName": "قیمت های نفت",
+  "date": "1398/04/28 17:38:15",
+  "firstPrice": 0,
+  "id": "oil_brent",
+  "lastPrice": 62.38,
+  "maxPrice": 63.31,
+  "minPrice": 62.3,
+  "name": "نفت_برنت",
+  "pushId": "SYMBOL_نفت_برنت",
+  "q_status": null,
+  "sectionName": "قیمت های نفت",
+  "status": "A",
+  "subSectionName": null,
+  "title": "نفت برنت",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 62.300000000000004
+}

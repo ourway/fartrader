@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 24756,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_azn",
+  "lastPrice": 24756,
+  "maxPrice": 24756,
+  "minPrice": 24756,
+  "name": "منات_آذربایجان_مرجع",
+  "pushId": "SYMBOL_منات_آذربایجان_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "منات آذربایجان مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 24756
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 91270,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_cad",
+  "lastPrice": 91270,
+  "maxPrice": 92940,
+  "minPrice": 90510,
+  "name": "دلار_کانادا_آزاد",
+  "pushId": "SYMBOL_دلار_کانادا_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دلار کانادا آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 91270
+}

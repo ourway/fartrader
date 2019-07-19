@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 20930,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_try",
+  "lastPrice": 20930,
+  "maxPrice": 21320,
+  "minPrice": 20790,
+  "name": "لیر_ترکیه_آزاد",
+  "pushId": "SYMBOL_لیر_ترکیه_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "لیر ترکیه آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 20930
+}

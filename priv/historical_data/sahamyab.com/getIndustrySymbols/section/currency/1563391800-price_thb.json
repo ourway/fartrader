@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 3860,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_thb",
+  "lastPrice": 3860,
+  "maxPrice": 3930,
+  "minPrice": 3830,
+  "name": "بات_تایلند_آزاد",
+  "pushId": "SYMBOL_بات_تایلند_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "بات تایلند آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 3860
+}

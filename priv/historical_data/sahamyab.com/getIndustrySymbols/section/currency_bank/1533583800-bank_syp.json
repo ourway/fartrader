@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 82,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1397/05/16 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_syp",
+  "lastPrice": 82,
+  "maxPrice": 82,
+  "minPrice": 82,
+  "name": "لیر_سوریه_مرجع",
+  "pushId": "SYMBOL_لیر_سوریه_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "لیر سوریه مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 82
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 6.6241,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/24 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_cron_denmark",
+  "lastPrice": 6.6241,
+  "maxPrice": 6.637,
+  "minPrice": 6.6058,
+  "name": "کرون_دانمارک_نرخ_برابری",
+  "pushId": "SYMBOL_کرون_دانمارک_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "کرون دانمارک نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 6.6241
+}

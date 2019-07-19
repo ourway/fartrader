@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 1.0e3,
+  "highest_price": 1049.0,
+  "isin": "IRO7ALTP0001",
+  "last_traded_price": 902.0,
+  "lowest_price": 902.0,
+  "trade_volume": 99062.0,
+  "unix_time": 1492905600
+}

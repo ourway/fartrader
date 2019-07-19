@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 750,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_pkr",
+  "lastPrice": 750,
+  "maxPrice": 770,
+  "minPrice": 750,
+  "name": "روپیه_پاکستان_آزاد",
+  "pushId": "SYMBOL_روپیه_پاکستان_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "روپیه پاکستان آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 750
+}

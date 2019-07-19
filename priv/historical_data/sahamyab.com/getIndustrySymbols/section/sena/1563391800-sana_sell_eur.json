@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 134811,
+  "corpName": "قیمت ارزهای سنا",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "sana_sell_eur",
+  "lastPrice": 134811,
+  "maxPrice": 134811,
+  "minPrice": 134811,
+  "name": "سامانه_سنا_یورو_فروش",
+  "pushId": "SYMBOL_سامانه_سنا_یورو_فروش",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای سنا",
+  "status": "A",
+  "subSectionName": null,
+  "title": "سامانه سنا یورو فروش",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 134811
+}

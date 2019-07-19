@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 101.82,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/24 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_yen",
+  "lastPrice": 101.82,
+  "maxPrice": 102.64,
+  "minPrice": 101.6,
+  "name": "ین_ژاپن_نرخ_برابری",
+  "pushId": "SYMBOL_ین_ژاپن_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "ین ژاپن نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 101.82
+}

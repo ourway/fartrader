@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 32740,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_qar",
+  "lastPrice": 32740,
+  "maxPrice": 33320,
+  "minPrice": 32460,
+  "name": "ریال_قطر_آزاد",
+  "pushId": "SYMBOL_ریال_قطر_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "ریال قطر آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 32740
+}

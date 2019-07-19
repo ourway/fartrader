@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 26360,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_pkr",
+  "lastPrice": 26360,
+  "maxPrice": 26360,
+  "minPrice": 26360,
+  "name": "روپیه_پاکستان_مرجع",
+  "pushId": "SYMBOL_روپیه_پاکستان_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "روپیه پاکستان مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 26360
+}

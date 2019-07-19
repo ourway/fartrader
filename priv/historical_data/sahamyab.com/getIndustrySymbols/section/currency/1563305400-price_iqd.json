@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 100,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/26 00:00:00",
+  "firstPrice": 0,
+  "id": "price_iqd",
+  "lastPrice": 100,
+  "maxPrice": 100,
+  "minPrice": 90,
+  "name": "دینار_عراق_آزاد",
+  "pushId": "SYMBOL_دینار_عراق_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دینار عراق آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 100
+}

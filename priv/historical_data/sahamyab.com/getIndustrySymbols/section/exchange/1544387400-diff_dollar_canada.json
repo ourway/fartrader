@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 1.3048,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/19 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_dollar_canada",
+  "lastPrice": 1.3048,
+  "maxPrice": 1.3124,
+  "minPrice": 1.3031,
+  "name": "دلار_کانادا_نرخ_برابری",
+  "pushId": "SYMBOL_دلار_کانادا_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دلار کانادا نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 1.3048
+}

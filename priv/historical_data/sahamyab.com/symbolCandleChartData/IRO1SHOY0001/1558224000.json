@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 9090.0,
+  "highest_price": 9090.0,
+  "isin": "IRO1SHOY0001",
+  "last_traded_price": 8780.0,
+  "lowest_price": 8.7e3,
+  "trade_volume": 1787214.0,
+  "unix_time": 1558224000
+}

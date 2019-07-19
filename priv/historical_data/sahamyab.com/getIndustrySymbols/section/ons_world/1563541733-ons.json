@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 1436.51,
+  "corpName": "انس های جهانی",
+  "date": "1398/04/28 17:38:53",
+  "firstPrice": 0,
+  "id": "ons",
+  "lastPrice": 1436.51,
+  "maxPrice": 1453.01,
+  "minPrice": 1433.93,
+  "name": "انس_جهانی_طلا",
+  "pushId": "SYMBOL_انس_جهانی_طلا",
+  "q_status": null,
+  "sectionName": "انس های جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "انس جهانی طلا",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 1444.85
+}

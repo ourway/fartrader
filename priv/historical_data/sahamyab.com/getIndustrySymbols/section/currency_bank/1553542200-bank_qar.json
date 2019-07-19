@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 11539,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/01/06 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_qar",
+  "lastPrice": 11539,
+  "maxPrice": 11539,
+  "minPrice": 11539,
+  "name": "ریال_قطر_مرجع",
+  "pushId": "SYMBOL_ریال_قطر_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "ریال قطر مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 11539
+}

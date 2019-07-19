@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 10050.0,
+  "highest_price": 10060.0,
+  "isin": "IRT3SSNF0001",
+  "last_traded_price": 10060.0,
+  "lowest_price": 10050.0,
+  "trade_volume": 3.01e5,
+  "unix_time": 1507680000
+}

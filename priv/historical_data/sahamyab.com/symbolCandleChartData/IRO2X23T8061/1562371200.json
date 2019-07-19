@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 1.15e6,
+  "highest_price": 1.2e6,
+  "isin": "IRO2X23T8061",
+  "last_traded_price": 1.2e6,
+  "lowest_price": 1.15e6,
+  "trade_volume": 10.0,
+  "unix_time": 1562371200
+}

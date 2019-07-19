@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 9999.0,
+  "highest_price": 10032.0,
+  "isin": "IRO1STEH0001",
+  "last_traded_price": 10032.0,
+  "lowest_price": 9750.0,
+  "trade_volume": 5004822.0,
+  "unix_time": 1558828800
+}

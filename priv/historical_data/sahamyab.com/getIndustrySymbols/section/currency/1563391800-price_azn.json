@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 70140,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_azn",
+  "lastPrice": 70140,
+  "maxPrice": 71380,
+  "minPrice": 69490,
+  "name": "منات_آذربایجان_آزاد",
+  "pushId": "SYMBOL_منات_آذربایجان_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "منات آذربایجان آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 70140
+}

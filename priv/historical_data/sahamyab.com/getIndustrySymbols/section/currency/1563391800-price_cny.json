@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 17320,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_cny",
+  "lastPrice": 17320,
+  "maxPrice": 17660,
+  "minPrice": 17180,
+  "name": "یوان_چین_آزاد",
+  "pushId": "SYMBOL_یوان_چین_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "یوان چین آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 17320
+}

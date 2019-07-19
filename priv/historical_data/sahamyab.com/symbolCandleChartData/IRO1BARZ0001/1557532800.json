@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 5040.0,
+  "highest_price": 5323.0,
+  "isin": "IRO1BARZ0001",
+  "last_traded_price": 5146.0,
+  "lowest_price": 5.0e3,
+  "trade_volume": 6668563.0,
+  "unix_time": 1557532800
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 38990,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_jpy",
+  "lastPrice": 38990,
+  "maxPrice": 38990,
+  "minPrice": 38990,
+  "name": "ین_ژاپن_مرجع",
+  "pushId": "SYMBOL_ین_ژاپن_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "ین ژاپن مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 38990
+}

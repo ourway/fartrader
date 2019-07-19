@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 6107,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_cny",
+  "lastPrice": 6107,
+  "maxPrice": 6107,
+  "minPrice": 6107,
+  "name": "یوان_چین_مرجع",
+  "pushId": "SYMBOL_یوان_چین_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "یوان چین مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 6107
+}

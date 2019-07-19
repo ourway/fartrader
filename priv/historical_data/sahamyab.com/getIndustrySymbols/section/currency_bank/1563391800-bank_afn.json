@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 520,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_afn",
+  "lastPrice": 520,
+  "maxPrice": 520,
+  "minPrice": 520,
+  "name": "افغانی_مرجع",
+  "pushId": "SYMBOL_افغانی_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "افغانی مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 520
+}

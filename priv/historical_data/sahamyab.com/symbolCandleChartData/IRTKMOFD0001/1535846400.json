@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 1.3e4,
+  "highest_price": 13355.0,
+  "isin": "IRTKMOFD0001",
+  "last_traded_price": 13108.0,
+  "lowest_price": 12960.0,
+  "trade_volume": 2645364.0,
+  "unix_time": 1535846400
+}

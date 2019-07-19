@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 1.2e3,
+  "highest_price": 1251.0,
+  "isin": "IRO7KARP0001",
+  "last_traded_price": 1250.0,
+  "lowest_price": 1.2e3,
+  "trade_volume": 3.65e5,
+  "unix_time": 1463184000
+}

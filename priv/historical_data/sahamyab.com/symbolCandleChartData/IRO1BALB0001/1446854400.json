@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 1.2e3,
+  "highest_price": 1210.0,
+  "isin": "IRO1BALB0001",
+  "last_traded_price": 1170.0,
+  "lowest_price": 1167.0,
+  "trade_volume": 4430766.0,
+  "unix_time": 1446854400
+}

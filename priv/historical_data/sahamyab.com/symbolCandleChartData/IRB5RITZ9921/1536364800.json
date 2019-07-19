@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 1.0005e6,
+  "highest_price": 1.0025e6,
+  "isin": "IRB5RITZ9921",
+  "last_traded_price": 1.0022e6,
+  "lowest_price": 1000352.0,
+  "trade_volume": 10717.0,
+  "unix_time": 1536364800
+}

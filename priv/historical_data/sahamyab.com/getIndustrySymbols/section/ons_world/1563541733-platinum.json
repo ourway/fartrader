@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 861.95,
+  "corpName": "انس های جهانی",
+  "date": "1398/04/28 17:38:53",
+  "firstPrice": 0,
+  "id": "platinum",
+  "lastPrice": 861.95,
+  "maxPrice": 865.4,
+  "minPrice": 851.5,
+  "name": "انس_جهانی_پلاتین",
+  "pushId": "SYMBOL_انس_جهانی_پلاتین",
+  "q_status": null,
+  "sectionName": "انس های جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "انس جهانی پلاتین",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 855.85
+}

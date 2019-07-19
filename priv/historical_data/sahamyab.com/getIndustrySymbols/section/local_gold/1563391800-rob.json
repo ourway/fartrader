@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 13990000,
+  "corpName": " قیمت های طلا در بازار داخلی",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "rob",
+  "lastPrice": 13990000,
+  "maxPrice": 13990000,
+  "minPrice": 13490000,
+  "name": "ربع_سکه",
+  "pushId": "SYMBOL_ربع_سکه",
+  "q_status": null,
+  "sectionName": " قیمت های طلا در بازار داخلی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "ربع سکه",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 13990000
+}

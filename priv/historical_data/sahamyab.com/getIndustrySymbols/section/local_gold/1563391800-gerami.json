@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 9590000,
+  "corpName": " قیمت های طلا در بازار داخلی",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "gerami",
+  "lastPrice": 9590000,
+  "maxPrice": 9590000,
+  "minPrice": 9590000,
+  "name": "سکه_گرمی",
+  "pushId": "SYMBOL_سکه_گرمی",
+  "q_status": null,
+  "sectionName": " قیمت های طلا در بازار داخلی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "سکه گرمی",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 9590000
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 16.42,
+  "corpName": "انس های جهانی",
+  "date": "1398/04/28 17:38:41",
+  "firstPrice": 0,
+  "id": "silver",
+  "lastPrice": 16.42,
+  "maxPrice": 16.5,
+  "minPrice": 16.28,
+  "name": "انس_جهانی_نقره",
+  "pushId": "SYMBOL_انس_جهانی_نقره",
+  "q_status": null,
+  "sectionName": "انس های جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "انس جهانی نقره",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 16.37
+}

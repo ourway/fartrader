@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 2.3e3,
+  "highest_price": 2350.0,
+  "isin": "IRO1BAHN0001",
+  "last_traded_price": 2296.0,
+  "lowest_price": 2296.0,
+  "trade_volume": 1916488.0,
+  "unix_time": 1413590400
+}

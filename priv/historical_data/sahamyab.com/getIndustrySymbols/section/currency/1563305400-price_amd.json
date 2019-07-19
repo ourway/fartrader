@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 250,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/26 00:00:00",
+  "firstPrice": 0,
+  "id": "price_amd",
+  "lastPrice": 250,
+  "maxPrice": 250,
+  "minPrice": 240,
+  "name": "درام_ارمنستان_آزاد",
+  "pushId": "SYMBOL_درام_ارمنستان_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "درام ارمنستان آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 250
+}

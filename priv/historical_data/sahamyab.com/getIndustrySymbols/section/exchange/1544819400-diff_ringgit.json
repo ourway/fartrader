@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 4.0907,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/24 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_ringgit",
+  "lastPrice": 4.0907,
+  "maxPrice": 4.141,
+  "minPrice": 4.0796,
+  "name": "رینگیت_مالزی_نرخ_برابری",
+  "pushId": "SYMBOL_رینگیت_مالزی_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "رینگیت مالزی نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 4.0907
+}

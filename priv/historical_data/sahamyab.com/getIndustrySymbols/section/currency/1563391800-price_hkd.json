@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 15260,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_hkd",
+  "lastPrice": 15260,
+  "maxPrice": 15520,
+  "minPrice": 15130,
+  "name": "دلار_هنگ_کنگ_آزاد",
+  "pushId": "SYMBOL_دلار_هنگ_کنگ_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دلار هنگ کنگ آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 15260
+}

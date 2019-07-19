@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 10552.0,
+  "highest_price": 1.1e4,
+  "isin": "IRO1DAML0001",
+  "last_traded_price": 10752.0,
+  "lowest_price": 10552.0,
+  "trade_volume": 13748.0,
+  "unix_time": 1408406400
+}

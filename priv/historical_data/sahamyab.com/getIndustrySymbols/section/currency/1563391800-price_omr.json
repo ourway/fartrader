@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 308600,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_omr",
+  "lastPrice": 308600,
+  "maxPrice": 314100,
+  "minPrice": 305780,
+  "name": "ریال_عمان_آزاد",
+  "pushId": "SYMBOL_ریال_عمان_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "ریال عمان آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 308600
+}

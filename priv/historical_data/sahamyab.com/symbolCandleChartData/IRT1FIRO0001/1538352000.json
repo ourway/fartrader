@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 12199.0,
+  "highest_price": 12199.0,
+  "isin": "IRT1FIRO0001",
+  "last_traded_price": 12140.0,
+  "lowest_price": 12138.0,
+  "trade_volume": 3.1e4,
+  "unix_time": 1538352000
+}

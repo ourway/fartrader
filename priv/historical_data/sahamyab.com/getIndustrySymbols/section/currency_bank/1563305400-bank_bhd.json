@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 111703,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/26 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_bhd",
+  "lastPrice": 111703,
+  "maxPrice": 111703,
+  "minPrice": 111703,
+  "name": "دینار_بحرین_مرجع",
+  "pushId": "SYMBOL_دینار_بحرین_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دینار بحرین مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 111703
+}

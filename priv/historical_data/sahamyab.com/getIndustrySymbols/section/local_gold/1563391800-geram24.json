@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 5242000,
+  "corpName": " قیمت های طلا در بازار داخلی",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "geram24",
+  "lastPrice": 5242000,
+  "maxPrice": 5365000,
+  "minPrice": 5230000,
+  "name": "گرم_طلای_24_عیار",
+  "pushId": "SYMBOL_گرم_طلای_24_عیار",
+  "q_status": null,
+  "sectionName": " قیمت های طلا در بازار داخلی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "گرم طلای 24 عیار",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 5242000
+}

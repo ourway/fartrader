@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 137911,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_kwd",
+  "lastPrice": 137911,
+  "maxPrice": 137911,
+  "minPrice": 137911,
+  "name": "دینار_کویت_مرجع",
+  "pushId": "SYMBOL_دینار_کویت_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دینار کویت مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 137911
+}

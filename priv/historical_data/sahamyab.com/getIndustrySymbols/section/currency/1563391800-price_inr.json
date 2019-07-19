@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 1730,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_inr",
+  "lastPrice": 1730,
+  "maxPrice": 1760,
+  "minPrice": 1710,
+  "name": "روپیه_هند_آزاد",
+  "pushId": "SYMBOL_روپیه_هند_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "روپیه هند آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 1730
+}

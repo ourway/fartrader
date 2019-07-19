@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 3.0e4,
+  "highest_price": 3.0e4,
+  "isin": "IRO1MAGS0001",
+  "last_traded_price": 29866.0,
+  "lowest_price": 29850.0,
+  "trade_volume": 2018.0,
+  "unix_time": 1421107200
+}

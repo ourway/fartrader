@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 5376,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/26 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_hkd",
+  "lastPrice": 5376,
+  "maxPrice": 5376,
+  "minPrice": 5376,
+  "name": "دلار_هنگ_کنگ_مرجع",
+  "pushId": "SYMBOL_دلار_هنگ_کنگ_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دلار هنگ کنگ مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 5376
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 40050000,
+  "corpName": " قیمت های طلا در بازار داخلی",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "sekee",
+  "lastPrice": 40050000,
+  "maxPrice": 41180000,
+  "minPrice": 39950000,
+  "name": "سکه_امامی",
+  "pushId": "SYMBOL_سکه_امامی",
+  "q_status": null,
+  "sectionName": " قیمت های طلا در بازار داخلی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "سکه امامی",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 40050000
+}

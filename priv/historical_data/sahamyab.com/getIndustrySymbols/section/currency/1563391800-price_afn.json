@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 1490,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_afn",
+  "lastPrice": 1490,
+  "maxPrice": 1520,
+  "minPrice": 1480,
+  "name": "افغانی_آزاد",
+  "pushId": "SYMBOL_افغانی_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "افغانی آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 1490
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 52245,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_gbp",
+  "lastPrice": 52245,
+  "maxPrice": 52245,
+  "minPrice": 52245,
+  "name": "پوند_مرجع",
+  "pushId": "SYMBOL_پوند_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "پوند مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 52245
+}

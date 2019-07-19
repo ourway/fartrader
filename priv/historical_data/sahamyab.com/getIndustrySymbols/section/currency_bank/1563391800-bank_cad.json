@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 32202,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_cad",
+  "lastPrice": 32202,
+  "maxPrice": 32202,
+  "minPrice": 32202,
+  "name": "دلار_کانادا_مرجع",
+  "pushId": "SYMBOL_دلار_کانادا_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "دلار کانادا مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 32202
+}

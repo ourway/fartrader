@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 136114,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_thb",
+  "lastPrice": 136114,
+  "maxPrice": 136114,
+  "minPrice": 136114,
+  "name": "بات_تایلند_مرجع",
+  "pushId": "SYMBOL_بات_تایلند_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "بات تایلند مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 136114
+}

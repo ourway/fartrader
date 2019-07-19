@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 118550,
+  "corpName": "قیمت ارزهای سنا",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "sana_sell_usd",
+  "lastPrice": 118550,
+  "maxPrice": 118550,
+  "minPrice": 118550,
+  "name": "سامانه_سنا_دلار_فروش",
+  "pushId": "SYMBOL_سامانه_سنا_دلار_فروش",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای سنا",
+  "status": "A",
+  "subSectionName": null,
+  "title": "سامانه سنا دلار فروش",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 118550
+}

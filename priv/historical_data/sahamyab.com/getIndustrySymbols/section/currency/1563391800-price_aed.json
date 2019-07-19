@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 32450,
+  "corpName": "قیمت ارزهای آزاد",
+  "date": "1398/04/27 00:00:00",
+  "firstPrice": 0,
+  "id": "price_aed",
+  "lastPrice": 32450,
+  "maxPrice": 33040,
+  "minPrice": 32190,
+  "name": "درهم_امارات_آزاد",
+  "pushId": "SYMBOL_درهم_امارات_آزاد",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای آزاد",
+  "status": "A",
+  "subSectionName": null,
+  "title": "درهم امارات آزاد",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 32450
+}

@@ -1,0 +1,9 @@
+{
+  "first_traded_price": 3.2e3,
+  "highest_price": 3.3e3,
+  "isin": "IRO1TAYD0001",
+  "last_traded_price": 3.3e3,
+  "lowest_price": 3165.0,
+  "trade_volume": 253996.0,
+  "unix_time": 1487116800
+}

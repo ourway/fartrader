@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 6.6795,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/24 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_yuan",
+  "lastPrice": 6.6795,
+  "maxPrice": 6.6993,
+  "minPrice": 6.6693,
+  "name": "یوان_چین_نرخ_برابری",
+  "pushId": "SYMBOL_یوان_چین_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "یوان چین نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 6.6795
+}

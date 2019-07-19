@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 36.5969,
+  "corpName": "نرخ برابری ارزهای جهانی",
+  "date": "1397/09/19 00:00:00",
+  "firstPrice": 0,
+  "id": "diff_dirham",
+  "lastPrice": 36.5969,
+  "maxPrice": 36.7183,
+  "minPrice": 36.5114,
+  "name": "درهم_امارات_نرخ_برابری",
+  "pushId": "SYMBOL_درهم_امارات_نرخ_برابری",
+  "q_status": null,
+  "sectionName": "نرخ برابری ارزهای جهانی",
+  "status": "A",
+  "subSectionName": null,
+  "title": "درهم امارات نرخ برابری",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 36.5969
+}

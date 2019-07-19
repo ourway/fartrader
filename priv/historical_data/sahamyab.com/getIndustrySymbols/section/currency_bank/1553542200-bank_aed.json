@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 11437,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/01/06 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_aed",
+  "lastPrice": 11437,
+  "maxPrice": 11437,
+  "minPrice": 11437,
+  "name": "درهم_امارات_مرجع",
+  "pushId": "SYMBOL_درهم_امارات_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "درهم امارات مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 11437
+}

@@ -1,0 +1,23 @@
+{
+  "InsCode": null,
+  "closingPrice": 611,
+  "corpName": "قیمت ارزهای بانکی / مرجع",
+  "date": "1398/04/26 00:00:00",
+  "firstPrice": 0,
+  "id": "bank_inr",
+  "lastPrice": 611,
+  "maxPrice": 611,
+  "minPrice": 611,
+  "name": "روپیه_هند_مرجع",
+  "pushId": "SYMBOL_روپیه_هند_مرجع",
+  "q_status": null,
+  "sectionName": "قیمت ارزهای بانکی / مرجع",
+  "status": "A",
+  "subSectionName": null,
+  "title": "روپیه هند مرجع",
+  "tradeCount": 0,
+  "tradeTotalPrice": 0,
+  "tradeVolume": 0,
+  "type": "tgju",
+  "yesterdayPrice": 611
+}
