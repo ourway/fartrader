@@ -16,6 +16,7 @@ defmodule FarTrader.ExternalData do
     |> Enum.map(fn s ->
       nil
       # Rihanna.enqueue({__MODULE__, :save_trade_history, [s]})
+      # Rihanna.enqueue({__MODULE__, :save_trade_chart_history, []})
       # Rihanna.enqueue({__MODULE__, :save_symbol_ext_data, [s]})
       # Rihanna.enqueue({__MODULE__, :save_symbol_intro, [s]})
       # Rihanna.enqueue({__MODULE__, :save_stock_watch_charts, [s]})
@@ -307,6 +308,71 @@ defmodule FarTrader.ExternalData do
     epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
     basedir = :code.priv_dir(:farsheed_trader)
 
+    savedir = "#{basedir}/historical_data/sahamyab.com/tradeHistory/#{stock.isin}"
+
+    File.mkdir(savedir)
+
+    headers = [
+      {"user-agent",
+       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36 OPR/62.0.3331.66"},
+      {"accept", "application/json"}
+    ]
+
+    url =
+      "https://www.sahamyab.com/guest/symbol/tradeHistory?code=#{stock.fa_symbol}&page=0&stockWatch=1"
+      |> URI.encode()
+
+    case Utils.http_get(url, headers) do
+      %HTTPoison.Response{:status_code => 200, :body => body} ->
+        # {unixtime, first_traded_price, highest_price, lowest_price, last_traded_price, volume}
+        {:ok, %{"success" => true, "result" => data, "pages" => page_count}} =
+          body |> Jason.decode()
+
+        for p <- 0..(page_count - 1) do
+          url =
+            "https://www.sahamyab.com/guest/symbol/tradeHistory?code=#{stock.fa_symbol}&page=#{p}&stockWatch=1"
+            |> URI.encode()
+
+          case Utils.http_get(url, headers) do
+            %HTTPoison.Response{:status_code => 200, :body => b} ->
+              {:ok, %{"success" => true, "result" => d}} = b |> Jason.decode()
+
+              for day <- d do
+                case day["open"] do
+                  nil ->
+                    :not_available
+
+                  _ ->
+                    dt = day["time"] |> Timex.from_unix(:millisecond)
+                    fname = "#{savedir}/#{dt |> Timex.to_unix()}.json"
+                    {:ok, doc} = day |> Jason.encode(pretty: true)
+                    :ok = File.write(fname, doc)
+                end
+              end
+
+            %HTTPoison.Response{:status_code => _} ->
+              :error
+
+            {:error, reason} ->
+              reason
+          end
+        end
+
+      %HTTPoison.Response{:status_code => _} ->
+        :error
+
+      {:error, reason} ->
+        reason
+    end
+  end
+
+  @doc """
+  		saves trade history to priv/historical folder for later analysis
+  """
+  def save_trade_chart_history(stock) do
+    epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
+    basedir = :code.priv_dir(:farsheed_trader)
+
     savedir = "#{basedir}/historical_data/sahamyab.com/symbolCandleChartData/#{stock.isin}"
 
     File.mkdir(savedir)
@@ -337,17 +403,17 @@ defmodule FarTrader.ExternalData do
 
           d = %{
             isin: stock.isin,
-            unix_time: utime |> Timex.from_unix(:millisecond) |> Timex.to_unix,
+            unix_time: utime |> Timex.from_unix(:millisecond) |> Timex.to_unix(),
             first_traded_price: first_traded_price,
             last_traded_price: latest_traded_price,
             lowest_price: lowest_price,
             highest_price: highest_price,
             trade_volume: volume
           }
+
           {:ok, doc} = d |> Jason.encode(pretty: true)
           fname = "#{savedir}/#{d.unix_time}.json"
           :ok = File.write(fname, doc)
-
         end)
 
       %HTTPoison.Response{:status_code => _} ->
