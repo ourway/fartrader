@@ -17,10 +17,11 @@ defmodule FarTrader.ExternalData do
       # Rihanna.enqueue({__MODULE__, :save_trade_history, [s]})
       # Rihanna.enqueue({__MODULE__, :save_symbol_ext_data, [s]})
       # Rihanna.enqueue({__MODULE__, :save_symbol_intro, [s]})
-        Rihanna.enqueue({__MODULE__, :save_stock_watch_charts, [s]})
+      # Rihanna.enqueue({__MODULE__, :save_stock_watch_charts, [s]})
+      Rihanna.enqueue({__MODULE__, :save_symbol_info, [s]})
     end)
 
-    Rihanna.enqueue({__MODULE__, :save_industry_symbols, []})
+    # Rihanna.enqueue({__MODULE__, :save_industry_symbols, []})
   end
 
   @doc """
@@ -85,9 +86,6 @@ defmodule FarTrader.ExternalData do
     end
   end
 
-
-
-
   @doc """
   		saves symbol extra analytical data for later usage
   """
@@ -106,7 +104,9 @@ defmodule FarTrader.ExternalData do
     ]
 
     url =
-      "https://www.sahamyab.com/api/proxy/symbol/stockWatchCharts?v=0.1&code=#{stock.fa_symbol}&_=#{epoch}"
+      "https://www.sahamyab.com/api/proxy/symbol/stockWatchCharts?v=0.1&code=#{stock.fa_symbol}&_=#{
+        epoch
+      }"
       |> URI.encode()
 
     case Utils.http_get(url, headers) do
@@ -119,11 +119,6 @@ defmodule FarTrader.ExternalData do
         :error
     end
   end
-
-
-
-
-
 
   @doc """
   		saves symbol extra analytical data for later usage
@@ -183,6 +178,28 @@ defmodule FarTrader.ExternalData do
       |> URI.encode()
 
     case Utils.http_get(url, headers) do
+      %HTTPoison.Response{:status_code => 200, :body => body} ->
+        # {unixtime, first_traded_price, highest_price, lowest_price, last_traded_price, volume}
+        rawfilepath = "#{savedir}/raw.json"
+        :ok = File.write(rawfilepath, body)
+
+      %HTTPoison.Response{:status_code => _} ->
+        :error
+    end
+  end
+
+  def save_symbol_info(stock) do
+    basedir = :code.priv_dir(:farsheed_trader)
+    savedir = "#{basedir}/historical_data/sahamyab.com/symbolInfo/#{stock.isin}"
+    File.mkdir(savedir)
+
+    epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
+    url = "https://www.sahamyab.com/guest/twiter/symbolInfo?_=#{epoch}" |> URI.encode()
+
+    {:ok, payload} =
+      %{symbol: stock.fa_symbol, price: true, bestLimits: true, full: true} |> Jason.encode()
+
+    case Utils.http_post(url, payload, [{"Content-Type", "application/json"}]) do
       %HTTPoison.Response{:status_code => 200, :body => body} ->
         # {unixtime, first_traded_price, highest_price, lowest_price, last_traded_price, volume}
         rawfilepath = "#{savedir}/raw.json"
