@@ -11,25 +11,91 @@ defmodule FarTrader.ExternalData do
   #
   #
   def get_all_historical_data do
-    FarTrader.Stock |> FarTrader.Repo.all |> Enum.map(fn s ->
-      Rihanna.enqueue({__MODULE__, :save_trade_history, [s]})
-      Rihanna.enqueue({__MODULE__, :save_symbol_ext_data, [s]})
+    FarTrader.Stock
+    |> FarTrader.Repo.all()
+    |> Enum.map(fn s ->
+      # Rihanna.enqueue({__MODULE__, :save_trade_history, [s]})
+      # Rihanna.enqueue({__MODULE__, :save_symbol_ext_data, [s]})
+      # Rihanna.enqueue({__MODULE__, :save_symbol_intro, [s]})
+        Rihanna.enqueue({__MODULE__, :save_stock_watch_charts, [s]})
     end)
+
+    Rihanna.enqueue({__MODULE__, :save_industry_symbols, []})
   end
+
+  @doc """
+  		saves symbol extra analytical data for later usage
+  """
+  def save_industry_symbols do
+    now = Timex.now("Asia/Tehran")
+    datefrm = "#{now.year}-#{now.month}-#{now.day}-#{now.hour}"
+    epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
+    basedir = :code.priv_dir(:farsheed_trader)
+
+    headers = [
+      {"user-agent",
+       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36 OPR/62.0.3331.66"},
+      {"accept", "application/json"}
+    ]
+
+    for section <- [
+          "currency",
+          "currency_bank",
+          "sena",
+          "exchange",
+          "ons_world",
+          "local_gold",
+          "oil"
+        ] do
+      savedir = "#{basedir}/historical_data/sahamyab.com/getIndustrySymbols/section"
+
+      url =
+        "https://www.sahamyab.com/api/proxy/symbol/getIndustrySymbols?tgju_section=#{section}&_=#{
+          epoch
+        }"
+        |> URI.encode()
+
+      case Utils.http_get(url, headers) do
+        %HTTPoison.Response{:status_code => 200, :body => body} ->
+          # {unixtime, first_traded_price, highest_price, lowest_price, last_traded_price, volume}
+          rawfilepath = "#{savedir}/#{section}-#{datefrm}.json"
+          :ok = File.write(rawfilepath, body)
+
+        %HTTPoison.Response{:status_code => _} ->
+          :error
+      end
+    end
+
+    for index <- ["selected", "industry", "topIndustry"] do
+      savedir = "#{basedir}/historical_data/sahamyab.com/getIndustrySymbols/index"
+
+      url =
+        "https://www.sahamyab.com/api/proxy/symbol/getIndustrySymbols?index=#{index}&_=#{epoch}"
+        |> URI.encode()
+
+      case Utils.http_get(url, headers) do
+        %HTTPoison.Response{:status_code => 200, :body => body} ->
+          # {unixtime, first_traded_price, highest_price, lowest_price, last_traded_price, volume}
+          rawfilepath = "#{savedir}/#{index}-#{datefrm}.json"
+          :ok = File.write(rawfilepath, body)
+
+        %HTTPoison.Response{:status_code => _} ->
+          :error
+      end
+    end
+  end
+
 
 
 
   @doc """
   		saves symbol extra analytical data for later usage
   """
-  def save_symbol_ext_data(stock) do
+  def save_stock_watch_charts(stock) do
     epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
     basedir = :code.priv_dir(:farsheed_trader)
 
-    savedir =
-      "#{basedir}/historical_data/sahamyab.com/api/proxy/symbol/getSymbolExtData/#{
-        stock.isin
-      }"
+    savedir = "#{basedir}/historical_data/sahamyab.com/stockWatchCharts/#{stock.isin}"
 
     File.mkdir(savedir)
 
@@ -40,7 +106,7 @@ defmodule FarTrader.ExternalData do
     ]
 
     url =
-      "https://www.sahamyab.com/api/proxy/symbol/getSymbolExtData?v=0.1&code=#{stock.fa_symbol}&stockWatch=1&_=#{epoch}"
+      "https://www.sahamyab.com/api/proxy/symbol/stockWatchCharts?v=0.1&code=#{stock.fa_symbol}&_=#{epoch}"
       |> URI.encode()
 
     case Utils.http_get(url, headers) do
@@ -57,17 +123,16 @@ defmodule FarTrader.ExternalData do
 
 
 
+
+
   @doc """
-  		saves trade history to priv/historical folder for later analysis
+  		saves symbol extra analytical data for later usage
   """
-  def save_trade_history(stock) do
+  def save_symbol_intro(stock) do
     epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
     basedir = :code.priv_dir(:farsheed_trader)
 
-    savedir =
-      "#{basedir}/historical_data/sahamyab.com/api/proxy/symbol/symbolCandleChartData/#{
-        stock.isin
-      }"
+    savedir = "#{basedir}/historical_data/sahamyab.com/getSymbolExtData-intro/#{stock.isin}"
 
     File.mkdir(savedir)
 
@@ -78,7 +143,77 @@ defmodule FarTrader.ExternalData do
     ]
 
     url =
-      "https://www.sahamyab.com/api/proxy/symbol/symbolCandleChartData?namad=#{stock.fa_symbol}&type=all&_=#{epoch}"
+      "https://www.sahamyab.com/api/proxy/symbol/getSymbolExtData?v=0.1&code=#{stock.fa_symbol}&extData=tseMoarefi&_=#{
+        epoch
+      }"
+      |> URI.encode()
+
+    case Utils.http_get(url, headers) do
+      %HTTPoison.Response{:status_code => 200, :body => body} ->
+        # {unixtime, first_traded_price, highest_price, lowest_price, last_traded_price, volume}
+        rawfilepath = "#{savedir}/raw.json"
+        :ok = File.write(rawfilepath, body)
+
+      %HTTPoison.Response{:status_code => _} ->
+        :error
+    end
+  end
+
+  @doc """
+  		saves symbol extra analytical data for later usage
+  """
+  def save_symbol_ext_data(stock) do
+    epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
+    basedir = :code.priv_dir(:farsheed_trader)
+
+    savedir = "#{basedir}/historical_data/sahamyab.com/getSymbolExtData/#{stock.isin}"
+
+    File.mkdir(savedir)
+
+    headers = [
+      {"user-agent",
+       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36 OPR/62.0.3331.66"},
+      {"accept", "application/json"}
+    ]
+
+    url =
+      "https://www.sahamyab.com/api/proxy/symbol/getSymbolExtData?v=0.1&code=#{stock.fa_symbol}&stockWatch=1&_=#{
+        epoch
+      }"
+      |> URI.encode()
+
+    case Utils.http_get(url, headers) do
+      %HTTPoison.Response{:status_code => 200, :body => body} ->
+        # {unixtime, first_traded_price, highest_price, lowest_price, last_traded_price, volume}
+        rawfilepath = "#{savedir}/raw.json"
+        :ok = File.write(rawfilepath, body)
+
+      %HTTPoison.Response{:status_code => _} ->
+        :error
+    end
+  end
+
+  @doc """
+  		saves trade history to priv/historical folder for later analysis
+  """
+  def save_trade_history(stock) do
+    epoch = DateTime.utc_now() |> DateTime.to_unix(:millisecond)
+    basedir = :code.priv_dir(:farsheed_trader)
+
+    savedir = "#{basedir}/historical_data/sahamyab.com/symbolCandleChartData/#{stock.isin}"
+
+    File.mkdir(savedir)
+
+    headers = [
+      {"user-agent",
+       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36 OPR/62.0.3331.66"},
+      {"accept", "application/json"}
+    ]
+
+    url =
+      "https://www.sahamyab.com/api/proxy/symbol/symbolCandleChartData?namad=#{stock.fa_symbol}&type=all&_=#{
+        epoch
+      }"
       |> URI.encode()
 
     case Utils.http_get(url, headers) do
